@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
@@ -40,6 +40,25 @@ const BlogIndex = ({ data, location }) => {
           </article>
         )
       })}
+
+      <nav>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            {pageContext.previousPagePath && <Link to={pageContext.previousPagePath}>Previous</Link>}
+          </li>
+          <li>
+            {pageContext.nextPagePath && <Link to={pageContext.nextPagePath}>Next</Link>}
+          </li>
+        </ul>
+      </nav>
     </Layout>
   )
 }
@@ -47,13 +66,13 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  query($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, skip: $skip, limit: $limit) {
       edges {
         node {
           excerpt
