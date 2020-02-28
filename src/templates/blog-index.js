@@ -40,8 +40,25 @@ const BlogIndex = ({ data, pageContext, location }) => {
           </article>
         )
       })}
-      {pageContext.previousPagePath && <Link to={pageContext.previousPagePath}>Previous</Link>}
-      {pageContext.nextPagePath && <Link to={pageContext.nextPagePath}>Next</Link>}
+
+      <nav>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            {pageContext.previousPagePath && <Link to={pageContext.previousPagePath}>Previous</Link>}
+          </li>
+          <li>
+            {pageContext.nextPagePath && <Link to={pageContext.nextPagePath}>Next</Link>}
+          </li>
+        </ul>
+      </nav>
     </Layout>
   )
 }
