@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
   paginate({
     createPage,
     items: posts,
-    itemsPerPage: 10,
+    itemsPerPage: 25,
     pathPrefix: '/',
     component: path.resolve('./src/templates/blog-index.js'),
   })
