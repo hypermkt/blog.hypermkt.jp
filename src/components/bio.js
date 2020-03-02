@@ -54,7 +54,7 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author}</strong> who lives and works in Tokyo.
+        都内で働くWebアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsにコードを書くのが楽しい。
         {` `}
         <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
       </p>
