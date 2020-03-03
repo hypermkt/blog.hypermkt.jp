@@ -41,23 +41,12 @@ YAPC::Hokkaido2016で「Vue.jsによるWebアプリケーション開発」を�
 
 発表はつい癖で早口になってしまいましたが無事に終了。「React.jsを導入しようと検討しているか、Vue.jsとの違いは何か？」「APIとフロントは一緒にすべきか、分けるべきか」等質問も頂いて嬉しかったです。
 
-
-> バーチーさんだ！！！ 
-[#yapcjapan](https://twitter.com/hashtag/yapcjapan?src=hash) 
-[#yapcjapanB](https://twitter.com/hashtag/yapcjapanB?src=hash) 
-[pic.twitter.com/E0NSYm9yLF](https://t.co/E0NSYm9yLF)
-— juné29💩公式アカウント (@june29) 
-[2016年12月10日](https://twitter.com/june29/status/807467808174940160)
-
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">バーチーさんだ！！！ <a href="https://twitter.com/hashtag/yapcjapan?src=hash&amp;ref_src=twsrc%5Etfw">#yapcjapan</a> <a href="https://twitter.com/hashtag/yapcjapanB?src=hash&amp;ref_src=twsrc%5Etfw">#yapcjapanB</a> <a href="https://t.co/E0NSYm9yLF">pic.twitter.com/E0NSYm9yLF</a></p>&mdash; Jun OHWADA (@june29) <a href="https://twitter.com/june29/status/807467808174940160?ref_src=twsrc%5Etfw">December 10, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 ま、明日になったら晴れてるでしょ！と軽い気持ちでその日は懇親会へ。
 
-
-> ( ﾟдﾟ) [#yapcjapan](https://twitter.com/hashtag/yapcjapan?src=hash) 
-[pic.twitter.com/XsaoLob6Zm](https://t.co/XsaoLob6Zm)
-— あべんべん (@abenben) 
-[2016年12月11日](https://twitter.com/abenben/status/807746789172342784)
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">( ﾟдﾟ)<a href="https://twitter.com/hashtag/yapcjapan?src=hash&amp;ref_src=twsrc%5Etfw">#yapcjapan</a> <a href="https://t.co/XsaoLob6Zm">pic.twitter.com/XsaoLob6Zm</a></p>&mdash; ◥◣◥◣あべんべん◢◤◢◤「フィンテックエンジニア養成読本」発売中 (@abenben) <a href="https://twitter.com/abenben/status/807746789172342784?ref_src=twsrc%5Etfw">December 11, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## 2016/12/11(日）〜12(月）まさかの空港泊
 
