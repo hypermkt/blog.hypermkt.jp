@@ -6,19 +6,24 @@ categories:
 - 登壇
 ---
 
-YAPC::Hokkaido2016で「Vue.jsによるWebアプリケーション開発」を発表してきました。多数の方々にご清聴いただき、かつ質問も頂きましてありがとうございました！これで今期９回目の発表も無事に終わりました。
-
-さて思い返すと今回は思い出深い旅となったので時系列に沿ってYAPC::Hokkaido2016を振り返りをします。##2016/12/09(金）北海道へ
+YAPC::Hokkaido2016で「Vue.jsによるWebアプリケーション開発」を発表してきました。
 
 
-今回は会社でスポンサーをしていることもあり
-[@june29](https://twitter.com/june29) さん、
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="https://speakerdeck.com/player/284455e250b3451386ce8d2c3671436f" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
+
+多数の方々にご清聴いただき、かつ質問も頂きましてありがとうございました！これで今期９回目の発表も無事に終わりました。
+
+さて思い返すと今回は思い出深い旅となったので時系列に沿ってYAPC::Hokkaido2016を振り返りをします。
+
+##2016/12/09(金）北海道へ
+
+今回は会社でスポンサーをしていることもあり[@june29](https://twitter.com/june29) さん、
 [@mamipeko](https://twitter.com/mamipeko)さん、自分の奥さんと４人で北海道に行きました。 新千歳空港から札幌市内へは電車で40分。電車から見える風景から想像以上の雪景色でテンション上がりまくりでした。札幌についたら既に積もっていてついはしゃいでしまった。埼玉県民は雪と海にめっぽう弱いです。
 
-![](/images/IMG_20161209_232203.jpg)
+![](/images/blog/2016/2016-12-09-01.jpg)
 夕食に入った居酒屋さんのイクラ丼が最高に美味しくて驚愕！ハラス、ホッケ、ラーメンサラダなどどれもめちゃくちゃ美味しかった！美味しいお店を紹介していただいてありがとうございます！！
 
-![](/images/IMG_20161209_234959.jpg)
+![](/images/blog/2016/2016-12-09-02.jpg)
 
 
 ## 2016/12/10(土）YAPC::Hokkaidoへ
@@ -27,17 +32,17 @@ YAPC::Hokkaido2016で「Vue.jsによるWebアプリケーション開発」を�
 東札幌駅を出たら膝まで雪が積もっており、スニーカーで来たことを後悔しました・・・。会場まで無事にたどり着けるのか不安を感じつつもどうにか札幌市産業振興センターに到着。
 
 
-![](/images/IMG_20161210_090658-e1481726876743.jpg)
+![](/images/blog/2016/2016-12-10-01.jpg)
 
 スピーカーグッズをもらってテンションマックスへ！こういうの欲しかったんです！
 
 
-![](/images/IMG_20161210_092633.jpg)
+![](/images/blog/2016/2016-12-10-02.jpg)
 
 発表はつい癖で早口になってしまいましたが無事に終了。「React.jsを導入しようと検討しているか、Vue.jsとの違いは何か？」「APIとフロントは一緒にすべきか、分けるべきか」等質問も頂いて嬉しかったです。
 
 
->バーチーさんだ！！！ 
+> バーチーさんだ！！！ 
 [#yapcjapan](https://twitter.com/hashtag/yapcjapan?src=hash) 
 [#yapcjapanB](https://twitter.com/hashtag/yapcjapanB?src=hash) 
 [pic.twitter.com/E0NSYm9yLF](https://t.co/E0NSYm9yLF)
@@ -46,24 +51,15 @@ YAPC::Hokkaido2016で「Vue.jsによるWebアプリケーション開発」を�
 
 
 
-
-
 ま、明日になったら晴れてるでしょ！と軽い気持ちでその日は懇親会へ。
 
 
->( ﾟдﾟ)
-[#yapcjapan](https://twitter.com/hashtag/yapcjapan?src=hash) 
+> ( ﾟдﾟ) [#yapcjapan](https://twitter.com/hashtag/yapcjapan?src=hash) 
 [pic.twitter.com/XsaoLob6Zm](https://t.co/XsaoLob6Zm)
 — あべんべん (@abenben) 
 [2016年12月11日](https://twitter.com/abenben/status/807746789172342784)
 
-
-
-
-
-
 ## 2016/12/11(日）〜12(月）まさかの空港泊
-
 
 帰りの飛行は19時だったので日中は二条市場、六花亭、旧札幌道庁を周り十分札幌を満喫しました。
 
@@ -72,7 +68,7 @@ YAPC::Hokkaido2016で「Vue.jsによるWebアプリケーション開発」を�
 最初はでこぼこのベンチの上で寝るのはきついな〜と思っていたのですが、空港から毛布、寝袋の提供があり、かつ空港内は暖房が効いて温かく、コンビニ、Wi-Fi、至る所に電源もあり思っていた以上に快適でした。この写真はうちの前線基地です。
 
 
-![](/images/IMG_20161212_002515.jpg)
+![](/images/blog/2016/2016-12-10-03.jpg)
 
 翌朝には新千歳空港温泉にも行くことができ空港泊で溜まった疲れを落とすには最高でした。露天風呂から見えた欠航の原因となった雪もなんだか感慨深く見えます。ちなみに朝だと８００円で入れます！安い！
 

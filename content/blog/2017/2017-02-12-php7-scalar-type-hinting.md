@@ -12,11 +12,7 @@ categories:
 
 
 *  引数の型宣言の種類が増えた
-
-
 *  関数の戻り値の型も指定できるようになった
-
-
 *  緩い型、強い型モードの２種類が設定できるようになった
 
 となります。早速確認していきましょう。
@@ -30,14 +26,8 @@ categories:
 
 
 *  ブーリアン型 bool
-
-
 *  文字列型 string
-
-
 *  数値型 int
-
-
 *  浮動小数点数型 float
 
 PHP5.0はクラス、PHP5.1は配列、PHP5.4はcallableが指定できましたが、型宣言として不十分でした。PHP7からやっと本格的な型宣言ができるようになったという印象です。
@@ -55,13 +45,14 @@ PHP7の大きな仕様追加の一つに上げられるのは、この
 
 下記のように戻り値に文字列を指定した関数で配列を返そうとすると、
 
-
+```php
 function hoge1(): string
 {
   return array();
 }
 
 echo hoge1();
+```
 
 
 ### 実行結果
@@ -69,8 +60,9 @@ echo hoge1();
 
 下記エラーが発生するようになり、より関数の入出力が厳密な実装ができるようになりました。
 
-
+```php
 PHP Fatal error:  Uncaught TypeError: Return value of hoge1() must be of the type string, array returned in
+```
 
 
 ## デフォルトでは弱い型検査、設定で強い型検査も可能
@@ -81,11 +73,7 @@ PHP Fatal error:  Uncaught TypeError: Return value of hoge1() must be of the typ
 
 
 *  弱い型、強い型の２種類があり、デフォルトでは弱い型が選択されている
-
-
 *  弱い型の場合に、間違った型が渡されても可能な限り型の自動変換が適用される
-
-
 *  厳密な型宣言にするには、declare文でstrict_types = 1を宣言することにより適用できる
 
 少し分かりにくいので、サンプルコードを交えながら見ていきましょう。
@@ -100,6 +88,7 @@ PHP Fatal error:  Uncaught TypeError: Return value of hoge1() must be of the typ
 サンプルコード2
 
 
+```php
 function hoge1(string $hoge)
 {
   var_dump($hoge);
@@ -107,27 +96,27 @@ function hoge1(string $hoge)
 
 hoge1('hoge'); // OK
 hoge1(1); // OK
+```
 
 
 実行結果
 
-
+```php
 string(4) "hoge"
 string(1) "1"
+```
 
 実行結果を見ると面白いことが起きています。数値の1が文字列の1に変換されているのが分かります。これが型の自動変換の結果のようですね。
 
 
 ### 厳密な型宣言
 
-
-
 declare(strict_types=1);を宣言すると、サンプルコード２の実行結果と変わりました。stringの時は、stringしか通らなくなりました。
 
 
 サンプルコード3
 
-
+```php
 declare(strict_types=1); // 厳密な型検査モードにする
 
 function hoge1(string $hoge)
@@ -137,12 +126,15 @@ function hoge1(string $hoge)
 
 echo hoge1('hoge'); // OK
 echo hoge1(1); // NG
+```
 
 
 実行結果
 
 
+```php
 hogePHP Fatal error:  Uncaught TypeError: Argument 1 passed to hoge1() must be of the type string, integer given, called
+```
 
 
 ## ２つの型検査が生み出す新たな世界
