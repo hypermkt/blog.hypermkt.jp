@@ -11,6 +11,8 @@ categories:
 2017年7月7日(金) LINE株式会社オフィスで開催された「
 [Vue.js Tokyo v-meetup #4](https://vuejs-meetup.connpass.com/event/58071/)」でLTしてきました。 当初は、「Vue.jsで作る音声レコーダー」というユニットテストとは全く関係ない事を話す予定でした。
 
+<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.1972%;"><iframe src="https://speakerdeck.com/player/2882ec422411496d9b317187150124a6" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>
+
 
 ## なぜユニットテストの話にしたのか
 
