@@ -26,8 +26,8 @@ Protocol Buffersの標準型を利用した場合、エレメントに値がセ�
 syntax = "proto3";
 
 message SampleMessage {
-  string name = 2;
   int64 age = 1;
+  string name = 2;
   bool has_job = 3;
 }
 ```
@@ -58,8 +58,8 @@ syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 
 message SampleMessage2 {
-  google.protobuf.StringValue name = 2;
   google.protobuf.Int64Value age = 1;
+  google.protobuf.StringValue name = 2;
   google.protobuf.BoolValue has_job = 3;
 }
 ```
