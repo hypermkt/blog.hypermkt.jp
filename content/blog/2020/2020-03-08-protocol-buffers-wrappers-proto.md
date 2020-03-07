@@ -87,7 +87,7 @@ irb(main):017:0> foo = SampleMessage2.new(age: Google::Protobuf::Int64Value.new(
 => <SampleMessage2: age: <Google::Protobuf::Int64Value: value: 10>, name: <Google::Protobuf::StringValue: value: "yamada">, has_job: <Google::Protobuf::BoolValue: value: true>>
 ```
 
-値を取得するときは   `.value` を指定しないといけなくなってしまった。
+値を取得するときは   `.value` を指定しないといけなくなってしまった。面倒くさい！
 
 ```ruby
 irb(main):018:0> foo.age.value
@@ -103,7 +103,7 @@ irb(main):020:0> foo.to_h
 
 ## 解決策
 
-`{foo: {value: "bar"}` の構造を`{foo: "bar"}` に変換するため、再帰的にハッシュを精査して該当の箇所を愚直に変換するようにしました。
+`{foo: {value: "bar"} }` の構造を`{foo: "bar"}` に変換するため、再帰的にハッシュを精査して該当の箇所を愚直に変換するようにしました。
 
 ```ruby
 def extract_values(obj)
@@ -124,7 +124,7 @@ def extract_values(obj)
 end
 ```
 
-このメソッドにハッシュを渡すと以下のように `{foo: {value: "bar"}` を `{foo: "bar"}` に変換してくれます。
+このメソッドにハッシュを渡すと以下のように `{foo: {value: "bar"} }` を `{foo: "bar"}` に変換してくれます！
 
 ```ruby
 irb(main):039:0> foo.to_h
@@ -133,7 +133,7 @@ irb(main):040:0> extract_values(foo.to_h)
 => {:age=>10, :name=>"yamada", :has_job=>true}
 ```
 
-ハッシュの中に配列があっても問題なしです。万事解決です！
+ハッシュの中に配列があっても問題なしです。万事解決！
 
 ```ruby
 irb(main):043:0> a = {foo1: {value: 'bar1'}, foo2: [{hoge2: {value: 'bar2'}}]}
@@ -142,7 +142,7 @@ irb(main):044:0> extract_values(a)
 => {:foo1=>"bar1", :foo2=>[{:hoge2=>"bar2"}]}
 ```
 
-他にも良い方法がありそうだが、今の所これ以上の方法が思いつきませんでした。もし他の方法がありましたら教えてもらえると嬉しいです。
+他にも良い方法がありそうですが、今の所これ以上の方法が思いつきませんでした。もし他の方法がありましたら教えてもらえると嬉しいです。
 
 ## まとめ
 
