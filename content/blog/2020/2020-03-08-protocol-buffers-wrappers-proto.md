@@ -50,7 +50,7 @@ irb(main):004:0> SampleMessage.new(age: nil, name: nil, has_job: nil)
 
 ### そこで wrappers.protoを使えば nil 判定できる
 
-wrappers.proto で提供される StringValueなどの新たな型を利用することで、
+wrappers.proto で提供される `Google::Protobuf::StringValue` という型を利用することで、
 
 ```
 syntax = "proto3";
@@ -64,7 +64,7 @@ message SampleMessage2 {
 }
 ```
 
-値が未セットの場合は nil になりました。これで値の nil 判定が可能になりました！
+値が未セットの場合は nil になり、これで値の nil 判定が可能になりました！
 
 ```ruby
 irb(main):016:0> SampleMessage2.new
