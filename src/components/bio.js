@@ -54,7 +54,7 @@ const Bio = () => {
         }}
       />
       <p>
-        都内で働くWebアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsにコードを書くのが楽しい。
+        都内で働くWebアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
         {` `}
         <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
       </p>
