@@ -6,10 +6,19 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "react-share";
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const articleUrl = location.href
+  const articleTitle = post.frontmatter.title
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -38,8 +47,20 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
+
+        <div align="right">
+          <FacebookShareButton url={articleUrl}>
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+
+          <TwitterShareButton title={articleTitle} via="hypermkt" url={articleUrl}>
+            <TwitterIcon size={32} round />
+          </TwitterShareButton>
+        </div>
+
         <hr
           style={{
+            marginTop: rhythm(1),
             marginBottom: rhythm(1),
           }}
         />
