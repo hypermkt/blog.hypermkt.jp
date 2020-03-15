@@ -10,7 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import { faGithubSquare, faTwitterSquare, faSpeakerDeck } from '@fortawesome/free-brands-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { rhythm } from "../utils/typography"
@@ -95,6 +95,18 @@ const Bio = () => {
               margin: '3px',
             }}
             icon={faSearch} />
+        </a>
+
+        <a href="https://speakerdeck.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
+          <FontAwesomeIcon
+            color="#108274"
+            style={{
+              height: '1.2em',
+              width: '1.2em',
+              margin: '2px',
+            }}
+            icon={faSpeakerDeck}
+          />
         </a>
       </p>
     </div>
