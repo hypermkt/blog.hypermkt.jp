@@ -9,6 +9,10 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithubSquare, faTwitterSquare, faSpeakerDeck } from '@fortawesome/free-brands-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 import { rhythm } from "../utils/typography"
 
 const Bio = () => {
@@ -37,7 +41,6 @@ const Bio = () => {
     <div
       style={{
         display: `flex`,
-        marginBottom: rhythm(2.5),
       }}
     >
       <Image
@@ -55,8 +58,55 @@ const Bio = () => {
       />
       <p>
         都内で働くWebアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+        <br />
+        <a href="https://github.com/hypermkt" style={{boxShadow: 'none'}} target="_blank">
+          <FontAwesomeIcon
+            color="#333"
+            style={{
+              height: '1.2em',
+              width: '1.2em',
+              margin: '2px',
+            }}
+            icon={faGithubSquare}
+          />
+        </a>
+
+        <a href="https://twitter.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
+          <FontAwesomeIcon
+            color="#3eaded"
+            style={{
+              height: '1.2em',
+              width: '1.2em',
+              margin: '2px',
+            }}
+            icon={faTwitterSquare}
+          />
+        </a>
+
+        <a href="https://qiita.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
+          <FontAwesomeIcon
+            color="white"
+            style={{
+              height: '1.1em',
+              width: '1.1em',
+              backgroundColor: '#4cb10d',
+              borderRadius: '2px',
+              margin: '3px',
+            }}
+            icon={faSearch} />
+        </a>
+
+        <a href="https://speakerdeck.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
+          <FontAwesomeIcon
+            color="#108274"
+            style={{
+              height: '1.2em',
+              width: '1.2em',
+              margin: '2px',
+            }}
+            icon={faSpeakerDeck}
+          />
+        </a>
       </p>
     </div>
   )
