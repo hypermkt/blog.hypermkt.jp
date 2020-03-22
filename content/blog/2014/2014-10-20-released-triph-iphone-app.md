@@ -24,4 +24,4 @@ triphでは浅草、渋谷の２エリアを選ぶ事ができ、指定エリア
 無料アプリなので是非一度ダウンロードして音声ガイドを再生してみて下さい！
 
 
-[![](http://triph.jp/appstore.svg)](https://itunes.apple.com/jp/app/id926095175)
+[![](https://triph.jp/appstore.svg)](https://itunes.apple.com/jp/app/id926095175)
