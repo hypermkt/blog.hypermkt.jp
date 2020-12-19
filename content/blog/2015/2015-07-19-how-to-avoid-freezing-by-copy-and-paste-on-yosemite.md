@@ -5,9 +5,6 @@ categories:
 - Mac
 ---
 
-[caption width="500" align="alignnone"]
-![](http://blog.naosan.jp/wp/wp-content/imports/photos/uncategorized/2013/03/30/20100827005924.jpg) レインボーカーソル[/caption]
-
 YosemiteにアップグレードしてからChrome上でコピー（⌘+C）、ペースト（⌘+V）をするとレインボーマークが表示されて数秒待たさせる現象がかなりの頻度で発生するようにあった。
 
 調べるとChronium側にもissueが立っていて問題が報告されているが、どうやら日本語のIMEが関係しており、日本人のみで問題が発生している様子。*[Mac上のChromeでショートカットキーでコピー/ペーストをすると数秒待たされる問題 （未解決） - Qiita](http://qiita.com/shrkw/items/9388301ad43f1cfe3f05)
