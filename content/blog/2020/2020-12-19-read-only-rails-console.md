@@ -53,7 +53,7 @@ DBのスレーブサーバーを構築し、SELECTのみを許可したREAD ONLY
 export READ_ONLY_DATABASE_URL=postgres://read_only_user:password@read_replica_host:5432/database
 ```
 
-### ステップ３: READ ONLY用Rails Consoleの起動スクリプトを用意する
+### ステップ３: リードレプリカ環境を利用するRails Consoleの起動スクリプトを用意する
 
 Rails アプリケーション内の `bin/production_read_only/rails` に以下をスクリプトを配置します。
 
