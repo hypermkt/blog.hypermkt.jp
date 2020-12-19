@@ -47,12 +47,10 @@ DBのスレーブサーバーを構築し、SELECTのみを許可したREAD ONLY
 
 ### ステップ２: リードレプリカ環境の環境変数を設定する
 
-サーバーにREAD ONLYユーザーの環境変数を設定します。
-
 例: 
 
-```ruby
-export READ_ONLY_DATABASE_URL=postgres://read_only_user:password@host:5432/database
+```bash
+export READ_ONLY_DATABASE_URL=postgres://read_only_user:password@read_replica_host:5432/database
 ```
 
 ### ステップ３: READ ONLY用Rails Consoleの起動スクリプトを用意する
