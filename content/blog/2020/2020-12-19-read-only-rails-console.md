@@ -3,7 +3,7 @@ title: 安全にRails Consoleが使いたい
 date: 2020-12-19
 ---
 
-この記事は、[SmartHR Advent Calender 2020 20日目](http://tolarian-academy.net/create-new-rails-react-app-pt1/)です。
+この記事は、[SmartHR Advent Calender 2020 20日目](https://qiita.com/advent-calendar/2020/smarthr)です。
 
 ## 背景
 
