@@ -28,7 +28,7 @@ name.try(:upcase)
 name.try { |v| v.upcase }
 ```
 
-## Enumerable#try
+## Enumerable#group_by
 
 ### 仕分けにはgroup_byは便利
 
