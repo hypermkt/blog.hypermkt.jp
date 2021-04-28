@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: gatsby-image
+    versions:
+    - 3.0.0
+    - 3.1.0
+    - 3.2.0
+  - dependency-name: gatsby-plugin-sharp
+    versions:
+    - 2.13.1
+    - 2.13.4
+    - 2.14.1
+  - dependency-name: gatsby-plugin-manifest
+    versions:
+    - 2.11.0
+    - 2.12.0
