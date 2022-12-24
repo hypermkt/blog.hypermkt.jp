@@ -95,9 +95,10 @@ MTG で共通しているのはメンバーとの議論で、意見を発散さ�
 
 ### 速い・遅い ORM の特徴を知ること
 
-例えば以下のように SQL では速いけど Active Record の `where` メソッドに巨大な配列を渡すを遅い場合があるようです。何も知らないと便利と思って実装してしまいそうなので、ORM の特徴や知見を貯めていく必要があることを知りました。
+例えば以下のように 生 SQL では速いですが Active Record の `where` メソッドに巨大な配列を渡すを遅い場合があります。何も知らないと便利と思って実装してしまいそうなので、ORM の特徴や知見を貯めていく必要があることを知りました。
+※ ちなみに以下の PR は後日 revert されており、現在もこの課題は残ったままと思われます。
 
-- [Perf: Improve performance of where when using an array of values by eileencodes · Pull Request \#39009 · rails/rails](https://github.com/rails/rails/pull/39009)
+- [PERF: Improve performance of where when using an array of values by kamipo · Pull Request \#39022 · rails/rails](https://github.com/rails/rails/pull/39022)
 
 ### 速い・遅い SQL の特徴を知ること
 
