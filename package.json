@@ -39,7 +39,6 @@
     "react-helmet": "^6.1.0",
     "react-share": "^4.4.1",
     "react-typography": "^0.16.23",
-    "sharp": "^0.32.1",
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13",
     "typography": "^0.16.21",
