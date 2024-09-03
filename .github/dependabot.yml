@@ -21,3 +21,6 @@ updates:
     versions:
     - 2.11.0
     - 2.12.0
+  automerged_updates:
+    - match:
+        update_type: "version-update:semver-patch"
