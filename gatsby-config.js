@@ -101,6 +101,7 @@ module.exports = {
                 }
               `,
             output: "/rss.xml",
+            feed_url: "https://blog.hypermkt.jp/rss.xml",
             title: "hypermkt blog",
           },
         ],
