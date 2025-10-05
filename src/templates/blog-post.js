@@ -11,7 +11,7 @@ import {
   FacebookIcon,
   TwitterShareButton,
   TwitterIcon,
-} from "react-share";
+} from "react-share"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -20,12 +20,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const articleUrl = location.href
   const articleTitle = post.frontmatter.title
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+  }
+
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.excerpt}
-      />
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
       <article>
         <header>
           <h1
@@ -43,7 +49,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.date}
+            {formatDate(post.frontmatter.date)}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -53,7 +59,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <FacebookIcon size={32} round />
           </FacebookShareButton>
 
-          <TwitterShareButton title={articleTitle} via="hypermkt" url={articleUrl}>
+          <TwitterShareButton
+            title={articleTitle}
+            via="hypermkt"
+            url={articleUrl}
+          >
             <TwitterIcon size={32} round />
           </TwitterShareButton>
         </div>
@@ -114,7 +124,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date
       }
     }
   }

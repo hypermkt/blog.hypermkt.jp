@@ -10,6 +10,15 @@ const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+  }
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
@@ -28,7 +37,7 @@ const BlogIndex = ({ data, pageContext, location }) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{formatDate(node.frontmatter.date)}</small>
             </header>
             <section>
               <p
@@ -52,10 +61,14 @@ const BlogIndex = ({ data, pageContext, location }) => {
           }}
         >
           <li>
-            {pageContext.previousPagePath && <Link to={pageContext.previousPagePath}>Previous</Link>}
+            {pageContext.previousPagePath && (
+              <Link to={pageContext.previousPagePath}>Previous</Link>
+            )}
           </li>
           <li>
-            {pageContext.nextPagePath && <Link to={pageContext.nextPagePath}>Next</Link>}
+            {pageContext.nextPagePath && (
+              <Link to={pageContext.nextPagePath}>Next</Link>
+            )}
           </li>
         </ul>
       </nav>
@@ -66,13 +79,17 @@ const BlogIndex = ({ data, pageContext, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query ($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, skip: $skip, limit: $limit) {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      skip: $skip
+      limit: $limit
+    ) {
       edges {
         node {
           excerpt
@@ -80,7 +97,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date
             title
           }
         }
