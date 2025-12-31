@@ -11,6 +11,14 @@ Wordpress2016.overrideThemeStyles = () => {
 
 delete Wordpress2016.googleFonts
 
+// Add Noto Sans JP to the font stack
+Wordpress2016.headerFontFamily = ["Noto Sans JP", ...Wordpress2016.headerFontFamily]
+Wordpress2016.bodyFontFamily = ["Noto Sans JP", ...Wordpress2016.bodyFontFamily]
+
+// Adjust colors for better readability
+Wordpress2016.bodyColor = "#333333"
+Wordpress2016.headerColor = "#333333"
+
 const typography = new Typography(Wordpress2016)
 
 // Hot reload typography in development.
