@@ -26,26 +26,23 @@ const BlogIndex = ({ data, pageContext, location }) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug}>
+          <article key={node.fields.slug} style={{ marginBottom: rhythm(1) }}>
             <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{formatDate(node.frontmatter.date)}</small>
+              <div style={{ display: `flex`, alignItems: `center` }}>
+                <small style={{ marginRight: rhythm(0.5), fontSize: '0.9em' }}>
+                  {formatDate(node.frontmatter.date)}
+                </small>
+                <h3
+                  style={{
+                    margin: 0,
+                  }}
+                >
+                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </h3>
+              </div>
             </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.excerpt,
-                }}
-              />
-            </section>
           </article>
         )
       })}
@@ -92,7 +89,6 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
