@@ -6,84 +6,79 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  })
+}
+
 const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-  }
+  // Group posts by year
+  const postsByYear = posts.reduce((acc, { node }) => {
+    const date = new Date(node.frontmatter.date)
+    const year = date.getFullYear()
+    const lastGroup = acc[acc.length - 1]
+
+    if (lastGroup && lastGroup.year === year) {
+      lastGroup.posts.push(node)
+    } else {
+      acc.push({ year, posts: [node] })
+    }
+    return acc
+  }, [])
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      {posts.map(({ node }, index) => {
-        const title = node.frontmatter.title || node.fields.slug
-        const date = new Date(node.frontmatter.date)
-        const year = date.getFullYear()
-
-        let yearHeader = null
-        if (index === 0) {
-          yearHeader = (
-            <h2
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: rhythm(0.5),
-              }}
-            >
-              {year}
-            </h2>
-          )
-        } else {
-          const previousNode = posts[index - 1].node
-          const previousDate = new Date(previousNode.frontmatter.date)
-          const previousYear = previousDate.getFullYear()
-          if (year !== previousYear) {
-            yearHeader = (
-              <h2
-                style={{
-                  marginTop: rhythm(1),
-                  marginBottom: rhythm(0.5),
-                }}
+      {postsByYear.map(({ year, posts }) => (
+        <React.Fragment key={year}>
+          <h2
+            style={{
+              marginTop: rhythm(1),
+              marginBottom: rhythm(0.5),
+            }}
+          >
+            {year}
+          </h2>
+          {posts.map((node) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <article
+                key={node.fields.slug}
+                style={{ marginBottom: rhythm(0.5) }}
               >
-                {year}
-              </h2>
+                <header>
+                  <div style={{ display: `flex`, alignItems: `center` }}>
+                    <small
+                      style={{ marginRight: rhythm(0.5), fontSize: "0.9em" }}
+                    >
+                      {formatDate(node.frontmatter.date)}
+                    </small>
+                    <h3
+                      style={{
+                        ...scale(0.2),
+                        margin: 0,
+                        lineHeight: rhythm(1),
+                      }}
+                    >
+                      <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                        {title}
+                      </Link>
+                    </h3>
+                  </div>
+                </header>
+              </article>
             )
-          }
-        }
-
-        return (
-          <React.Fragment key={node.fields.slug}>
-            {yearHeader}
-            <article style={{ marginBottom: rhythm(0.5) }}>
-              <header>
-                <div style={{ display: `flex`, alignItems: `center` }}>
-                  <small style={{ marginRight: rhythm(0.5), fontSize: "0.9em" }}>
-                    {formatDate(node.frontmatter.date)}
-                  </small>
-                  <h3
-                    style={{
-                      ...scale(0.2),
-                      margin: 0,
-                      lineHeight: rhythm(1),
-                    }}
-                  >
-                    <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                      {title}
-                    </Link>
-                  </h3>
-                </div>
-              </header>
-            </article>
-          </React.Fragment>
-        )
-      })}
+          })}
+        </React.Fragment>
+      ))}
 
       <nav>
         <ul
