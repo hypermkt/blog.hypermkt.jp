@@ -4,15 +4,9 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Share from "../components/share"
 import { rhythm, scale } from "../utils/typography"
 import { formatDate } from "../utils/date"
-
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-} from "react-share"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -46,19 +40,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </header>
         <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 
-        <div align="right">
-          <FacebookShareButton url={articleUrl}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-
-          <TwitterShareButton
-            title={articleTitle}
-            via="hypermkt"
-            url={articleUrl}
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-        </div>
+        <Share url={articleUrl} title={articleTitle} />
 
         <hr
           style={{
