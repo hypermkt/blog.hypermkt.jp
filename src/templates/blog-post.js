@@ -4,14 +4,9 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Share from "../components/share"
 import { rhythm, scale } from "../utils/typography"
-
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-} from "react-share"
+import { formatDate } from "../utils/date"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -20,53 +15,34 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const articleUrl = location.href
   const articleTitle = post.frontmatter.title
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-  }
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <article>
         <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
           <p
             style={{
-              ...scale(-1 / 5),
+              ...scale(0),
               display: `block`,
-              marginBottom: rhythm(1),
+              marginBottom: rhythm(0.2),
+              marginTop: rhythm(1),
+              color: "#666",
             }}
           >
             {formatDate(post.frontmatter.date)}
           </p>
+          <h1
+            style={{
+              marginTop: 0,
+              marginBottom: rhythm(1),
+            }}
+          >
+            {post.frontmatter.title}
+          </h1>
         </header>
         <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 
-        <div align="right">
-          <FacebookShareButton url={articleUrl}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-
-          <TwitterShareButton
-            title={articleTitle}
-            via="hypermkt"
-            url={articleUrl}
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-        </div>
+        <Share url={articleUrl} title={articleTitle} />
 
         <hr
           style={{
