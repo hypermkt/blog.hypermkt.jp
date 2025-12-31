@@ -20,23 +20,25 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <article>
         <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
           <p
             style={{
-              ...scale(-1 / 5),
+              ...scale(0),
               display: `block`,
-              marginBottom: rhythm(1),
+              marginBottom: rhythm(0.2),
+              marginTop: rhythm(1),
+              color: "#666",
             }}
           >
             {formatDate(post.frontmatter.date)}
           </p>
+          <h1
+            style={{
+              marginTop: 0,
+              marginBottom: rhythm(1),
+            }}
+          >
+            {post.frontmatter.title}
+          </h1>
         </header>
         <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 
