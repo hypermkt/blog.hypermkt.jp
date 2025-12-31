@@ -52,7 +52,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {formatDate(post.frontmatter.date)}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 
         <div align="right">
           <FacebookShareButton url={articleUrl}>
