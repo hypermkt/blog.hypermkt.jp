@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { rhythm, scale } from "../utils/typography"
 
 const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -26,15 +26,17 @@ const BlogIndex = ({ data, pageContext, location }) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug} style={{ marginBottom: rhythm(1) }}>
+          <article key={node.fields.slug} style={{ marginBottom: rhythm(0.5) }}>
             <header>
               <div style={{ display: `flex`, alignItems: `center` }}>
-                <small style={{ marginRight: rhythm(0.5), fontSize: '0.9em' }}>
+                <small style={{ marginRight: rhythm(0.5), fontSize: "0.9em" }}>
                   {formatDate(node.frontmatter.date)}
                 </small>
                 <h3
                   style={{
+                    ...scale(0.2),
                     margin: 0,
+                    lineHeight: rhythm(1),
                   }}
                 >
                   <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
