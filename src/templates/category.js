@@ -13,18 +13,23 @@ const CategoryTemplate = ({ data, pageContext, location }) => {
   const posts = data.allMarkdownRemark.edges
 
   // Group posts by year
-  const postsByYear = posts.reduce((acc, { node }) => {
-    const date = new Date(node.frontmatter.date)
-    const year = date.getFullYear()
-    const lastGroup = acc[acc.length - 1]
-
-    if (lastGroup && lastGroup.year === year) {
-      lastGroup.posts.push(node)
-    } else {
-      acc.push({ year, posts: [node] })
+  const postsByYearMap = posts.reduce((acc, { node }) => {
+    const year = new Date(node.frontmatter.date).getFullYear()
+    if (!acc.has(year)) {
+      acc.set(year, [])
     }
+    acc.get(year).push(node)
     return acc
-  }, [])
+  }, new Map())
+
+  const postsByYear = Array.from(postsByYearMap.entries())
+    .sort(([yearA], [yearB]) => yearB - yearA)
+    .map(([year, posts]) => ({
+      year,
+      posts: posts.sort(
+        (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
+      ),
+    }))
 
   return (
     <Layout location={location} title={siteTitle}>
