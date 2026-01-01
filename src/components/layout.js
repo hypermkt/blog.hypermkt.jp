@@ -13,7 +13,7 @@ const Layout = ({ location, title, children }) => {
       <h1
         style={{
           ...scale(1.5),
-          marginBottom: rhythm(1.5),
+          marginBottom: 0,
           marginTop: 0,
         }}
       >
@@ -35,6 +35,7 @@ const Layout = ({ location, title, children }) => {
         style={{
           fontFamily: `Montserrat, sans-serif`,
           marginTop: 0,
+          marginBottom: 0,
         }}
       >
         <Link
@@ -59,7 +60,32 @@ const Layout = ({ location, title, children }) => {
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
     >
-      <header>{header}</header>
+      <header
+        style={{
+          display: `flex`,
+          justifyContent: `space-between`,
+          alignItems: `center`,
+          marginBottom: rhythm(1.5),
+        }}
+      >
+        {header}
+        <nav>
+          <ul
+            style={{
+              display: `flex`,
+              listStyle: `none`,
+              margin: 0,
+            }}
+          >
+            <li style={{ marginRight: rhythm(0.5), marginBottom: 0 }}>
+              <Link to={`/`}>Home</Link>
+            </li>
+            <li style={{ marginBottom: 0 }}>
+              <Link to={`/about`}>About</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
       <main>{children}</main>
       <footer>
         <div style={{ marginBottom: rhythm(1) }}>
