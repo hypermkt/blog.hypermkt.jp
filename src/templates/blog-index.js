@@ -33,7 +33,6 @@ const BlogIndex = ({ data, pageContext, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
       {postsByYear.map(({ year, posts }) => (
         <React.Fragment key={year}>
           <h2
