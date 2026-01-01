@@ -1,6 +1,8 @@
 ---
 title: SmartHRに入社してからの3年間を振り返る
 date: 2022-12-24
+categories:
+  - 振り返り
 ---
 
 この記事は[SmartHR Advent Calender 2022 24 日目](https://qiita.com/advent-calendar/2022/smarthr)です。
