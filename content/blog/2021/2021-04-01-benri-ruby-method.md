@@ -1,6 +1,8 @@
 ---
-title: 最近出会ったRubyの便利メソッド復習 
+title: 最近出会ったRubyの便利メソッド復習
 date: 2021-04-01
+categories:
+  - Ruby
 ---
 
 ## はじめに
@@ -18,7 +20,7 @@ name = nil
 p name.upcase if name.present?
 ```
 
-そんな時にはActiveSupport の [try](https://railsguides.jp/active_support_core_extensions.html#try) が便利だった。ちょっとした処理でもスマートにかけるのいいですねー。
+そんな時には ActiveSupport の [try](https://railsguides.jp/active_support_core_extensions.html#try) が便利だった。ちょっとした処理でもスマートにかけるのいいですねー。
 
 ```ruby
 name = nil
@@ -30,7 +32,7 @@ name.try { |v| v.upcase }
 
 ## Enumerable#group_by
 
-### 仕分けにはgroup_byは便利
+### 仕分けには group_by は便利
 
 例えば `people` という人の集まりの配列があり、大人と子供で仕分けしたいとする。そんな時には [Enumerable#group_by](https://docs.ruby-lang.org/ja/latest/method/Enumerable/i/group_by.html) がめっちゃ便利だった。
 
@@ -62,9 +64,9 @@ $ ruby group_by.rb
 
 ## Array#sort
 
-データベースからデータを取得する場合は order by をすればいいが、API のレスポンスやCSVデータを任意の条件で並び替えたい時に [Array#sort](https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html) が便利だった
+データベースからデータを取得する場合は order by をすればいいが、API のレスポンスや CSV データを任意の条件で並び替えたい時に [Array#sort](https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html) が便利だった
 
-対象の配列に対して比較条件をブロックで渡すだけでOK。いやぁ、知らなかったなー。
+対象の配列に対して比較条件をブロックで渡すだけで OK。いやぁ、知らなかったなー。
 
 ```ruby
 people = [
@@ -110,8 +112,7 @@ sort_by というのもあるんですねぇ。
 
 ## 参考
 
-- [Active Support コア拡張機能 - Railsガイド](https://railsguides.jp/active_support_core_extensions.html#try)
+- [Active Support コア拡張機能 - Rails ガイド](https://railsguides.jp/active_support_core_extensions.html#try)
 - [Enumerable#group_by (Ruby 3.0.0 リファレンスマニュアル)](https://docs.ruby-lang.org/ja/latest/method/Enumerable/i/group_by.html)
 - [Array#sort (Ruby 3.0.0 リファレンスマニュアル)](https://docs.ruby-lang.org/ja/latest/method/Array/i/sort.html)
 - [Enumerable#sort_by (Ruby 3.0.0 リファレンスマニュアル)](https://docs.ruby-lang.org/ja/latest/method/Enumerable/i/sort_by.html)
-
