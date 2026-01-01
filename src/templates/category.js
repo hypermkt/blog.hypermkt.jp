@@ -7,8 +7,9 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { formatDate } from "../utils/date"
 
-const BlogIndex = ({ data, pageContext, location }) => {
+const CategoryTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const { category } = pageContext
   const posts = data.allMarkdownRemark.edges
 
   // Group posts by year
@@ -32,8 +33,9 @@ const BlogIndex = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title={`Posts in category "${category}"`} />
       <Bio />
+      <h1>Category: {category}</h1>
       {postsByYear.map(({ year, posts }) => (
         <React.Fragment key={year}>
           <h2
@@ -76,37 +78,14 @@ const BlogIndex = ({ data, pageContext, location }) => {
           })}
         </React.Fragment>
       ))}
-
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {pageContext.previousPagePath && (
-              <Link to={pageContext.previousPagePath}>Previous</Link>
-            )}
-          </li>
-          <li>
-            {pageContext.nextPagePath && (
-              <Link to={pageContext.nextPagePath}>Next</Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default CategoryTemplate
 
 export const pageQuery = graphql`
-  query ($skip: Int!, $limit: Int!) {
+  query ($category: String!) {
     site {
       siteMetadata {
         title
@@ -114,8 +93,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
-      skip: $skip
-      limit: $limit
+      filter: { frontmatter: { categories: { in: [$category] } } }
     ) {
       edges {
         node {
