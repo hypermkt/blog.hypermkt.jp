@@ -47,6 +47,11 @@ const AboutPage = ({ data, location }) => {
       year: 2016,
       items: [
         {
+          event: "Vue.js Tokyo v-meetup=\"#1\"",
+          title: "翻訳から始めるVue.js入門",
+          url: "https://www.slideshare.net/slideshow/vuejs-62571331/62571331",
+        },
+        {
           event: "YAP(achimon)C::Asia Hachioji 2016 mid in Shinagawa",
           title: "チーム全員でお申し込み数を2倍にした話",
           url: "https://speakerdeck.com/hypermkt/timuquan-yuan-deoshen-siip-mishu-wo2bei-nisitahua",
