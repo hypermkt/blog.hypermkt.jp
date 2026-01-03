@@ -242,108 +242,149 @@ const AboutPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="About" />
-      <h1>About</h1>
-      Webアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
-      <h2>執筆</h2>
-      <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
-        {books.map((book, index) => (
-          <li key={index}>
-            {book.media}：{" "}
-            {book.url ? (
-              <a href={book.url} target="_blank" rel="noopener noreferrer">
-                {book.title}
-              </a>
-            ) : (
-              book.title
-            )}
-          </li>
-        ))}
-      </ul>
-      <h2>テックブログ</h2>
-      <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
-        {techBlogs.map((blog, index) => (
-          <li key={index}>
-            {blog.media}：{" "}
-            {blog.url ? (
-              <a href={blog.url} target="_blank" rel="noopener noreferrer">
-                {blog.title}
-              </a>
-            ) : (
-              blog.title
-            )}
-          </li>
-        ))}
-      </ul>
-      <p style={{ fontSize: "0.8em", color: "#666" }}>
-        ※ 本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
-      </p>
-      <h2>発表</h2>
-      {presentations.map((yearData, index) => (
-        <div key={index}>
-          <h3>{yearData.year}年</h3>
-          <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
-            {yearData.items.map((item, itemIndex) => (
-              <li key={itemIndex}>
-                {item.event}：{" "}
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      <h2>コミュニティ</h2>
-      {communities.map((yearData, index) => (
-        <div key={index}>
-          <h3>{yearData.year}年</h3>
-          <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
-            {yearData.items.map((item, itemIndex) => (
-              <li key={itemIndex}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {item.event}
-                </a>
-                ： {item.role}
-                {item.articleUrl && (
-                  <>
-                    {" "}
-                    (
-                    <a href={item.articleUrl}>
-                      振り返り記事
-                    </a>
-                    )
-                  </>
+      <div className="text-gray-800">
+        <h1 className="text-3xl font-bold mb-6">About</h1>
+        <p className="text-lg leading-relaxed mb-8">
+          Webアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
+        </p>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">執筆</h2>
+          <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+            {books.map((book, index) => (
+              <li key={index}>
+                <span className="font-medium">{book.media}</span>
+                <span className="mx-2">/</span>
+                {book.url ? (
+                  <a
+                    href={book.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    {book.title}
+                  </a>
+                ) : (
+                  <span>{book.title}</span>
                 )}
               </li>
             ))}
           </ul>
-        </div>
-      ))}
-      <h2>SNS</h2>
-      <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
-        {socialLinks.map((social, index) => (
-          <li key={index}>
-            <a
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ boxShadow: "none" }}
-            >
-              <FontAwesomeIcon
-                color={social.color}
-                style={{
-                  height: "1.2em",
-                  width: "1.2em",
-                  marginRight: "8px",
-                  verticalAlign: "middle",
-                }}
-                icon={social.icon}
-              />
-              {social.account}
-            </a>
-          </li>
-        ))}
-      </ul>
+        </section>
+        
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">テックブログ</h2>
+          <ul className="list-disc list-outside !ml-5 !pl-0 space-y-3">
+            {techBlogs.map((blog, index) => (
+              <li key={index}>
+                <span className="font-medium text-gray-700">{blog.media}</span>
+                <span className="mx-2 text-gray-400">/</span>
+                {blog.url ? (
+                  <a
+                    href={blog.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    {blog.title}
+                  </a>
+                ) : (
+                  blog.title
+                )}
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-gray-500 mt-4 ml-1">
+            ※ 本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
+          </p>
+        </section>
+        
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">発表</h2>
+          {presentations.map((yearData, yearIndex) => (
+            <div key={yearIndex} className="mb-6">
+              <h3 className="text-xl font-bold text-gray-700 mb-2">{yearData.year}年</h3>
+              <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+                {yearData.items.map((presentationItem, presentationIndex) => (
+                  <li key={presentationIndex}>
+                    <span className="font-medium text-gray-800">{presentationItem.event}</span>：{" "}
+                    <a
+                      href={presentationItem.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 hover:underline"
+                    >
+                      {presentationItem.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+        
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">コミュニティ</h2>
+          {communities.map((communityYear, communityYearIndex) => (
+            <div key={communityYearIndex} className="mb-6">
+              <h3 className="text-xl font-bold text-gray-700 mb-2">{communityYear.year}年</h3>
+              <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+                {communityYear.items.map((communityItem, communityItemIndex) => (
+                  <li key={communityItemIndex}>
+                    <a
+                      href={communityItem.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                    >
+                      {communityItem.event}
+                    </a>
+                    <span className="mx-1">：</span>
+                    {communityItem.role}
+                    {communityItem.articleUrl && (
+                      <span className="ml-2 text-sm">
+                        (
+                        <a
+                          href={communityItem.articleUrl}
+                          className="text-gray-500 hover:text-gray-700 underline"
+                        >
+                          振り返り記事
+                        </a>
+                        )
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">SNS</h2>
+          <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+            {socialLinks.map((social, index) => (
+              <li key={index} className="mb-0">
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 hover:underline transition-colors no-underline"
+                  style={{ boxShadow: 'none' }}
+                >
+                  <FontAwesomeIcon
+                    icon={social.icon}
+                    style={{ color: social.color, width: '1.2em' }}
+                  />
+                  <span className="font-medium text-gray-800">
+                    {social.account}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </Layout>
   )
 }
