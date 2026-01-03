@@ -191,6 +191,20 @@ const AboutPage = ({ data, location }) => {
     },
   ]
 
+  const communities = [
+    {
+      year: 2018,
+      items: [
+        {
+          event: "Vue Fes Japan 2018",
+          role: "実行委員 (コアスタッフ / スポンサー担当)",
+          url: "https://vuefes.jp/2018/",
+          articleUrl: "/2018/12/21/vue-fes-japan-2018-core-staff/",
+        },
+      ],
+    },
+  ]
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="About" />
@@ -215,6 +229,32 @@ const AboutPage = ({ data, location }) => {
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
                   {item.title}
                 </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <h2>コミュニティ</h2>
+      {communities.map((yearData, index) => (
+        <div key={index}>
+          <h3>{yearData.year}年</h3>
+          <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
+            {yearData.items.map((item, itemIndex) => (
+              <li key={itemIndex}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.event}
+                </a>
+                ： {item.role}
+                {item.articleUrl && (
+                  <>
+                    {" "}
+                    (
+                    <a href={item.articleUrl}>
+                      振り返り記事
+                    </a>
+                    )
+                  </>
+                )}
               </li>
             ))}
           </ul>
