@@ -4,18 +4,33 @@ import {
   FacebookIcon,
   TwitterShareButton,
   XIcon,
+  HatenaShareButton,
+  HatenaIcon,
 } from "react-share"
 
 const Share = ({ url, title }) => {
-  return (
-    <div align="right">
-      <FacebookShareButton url={url}>
-        <FacebookIcon size={32} round />
-      </FacebookShareButton>
+  const iconSize = 32
+  const buttonStyle = { marginLeft: "8px" }
 
-      <TwitterShareButton title={title} via="hypermkt" url={url}>
-        <XIcon size={32} round />
-      </TwitterShareButton>
+  return (
+    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div style={buttonStyle}>
+        <FacebookShareButton url={url}>
+          <FacebookIcon size={iconSize} round />
+        </FacebookShareButton>
+      </div>
+
+      <div style={buttonStyle}>
+        <TwitterShareButton title={title} via="hypermkt" url={url}>
+          <XIcon size={iconSize} round />
+        </TwitterShareButton>
+      </div>
+
+      <div style={buttonStyle}>
+        <HatenaShareButton url={url} title={title}>
+          <HatenaIcon size={iconSize} round />
+        </HatenaShareButton>
+      </div>
     </div>
   )
 }
