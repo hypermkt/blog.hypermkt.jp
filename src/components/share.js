@@ -2,7 +2,7 @@ import React from "react"
 import {
   FacebookShareButton,
   FacebookIcon,
-  XShareButton,
+  TwitterShareButton,
   XIcon,
 } from "react-share"
 
@@ -13,9 +13,9 @@ const Share = ({ url, title }) => {
         <FacebookIcon size={32} round />
       </FacebookShareButton>
 
-      <XShareButton title={title} via="hypermkt" url={url}>
+      <TwitterShareButton title={title} via="hypermkt" url={url}>
         <XIcon size={32} round />
-      </XShareButton>
+      </TwitterShareButton>
     </div>
   )
 }

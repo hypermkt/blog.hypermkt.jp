@@ -21,24 +21,28 @@ const AboutPage = ({ data, location }) => {
       url: "https://github.com/hypermkt",
       icon: faGithubSquare,
       color: "#333",
+      account: "@hypermkt",
     },
     {
       name: "X",
       url: "https://x.com/hypermkt",
       icon: faXTwitter,
       color: "#000",
+      account: "@hypermkt",
     },
     {
       name: "Qiita",
       url: "https://qiita.com/hypermkt",
       icon: faSearch,
       color: "#4cb10d",
+      account: "@hypermkt",
     },
     {
       name: "Speaker Deck",
       url: "https://speakerdeck.com/hypermkt",
       icon: faSpeakerDeck,
       color: "#108274",
+      account: "hypermkt",
     },
   ]
 
@@ -236,7 +240,7 @@ const AboutPage = ({ data, location }) => {
                 }}
                 icon={social.icon}
               />
-              {social.name}
+              {social.account}
             </a>
           </li>
         ))}

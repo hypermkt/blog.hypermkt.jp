@@ -66,9 +66,11 @@ const Bio = () => {
               height: '1.2em',
               width: '1.2em',
               margin: '2px',
+              verticalAlign: 'middle',
             }}
             icon={faGithubSquare}
           />
+          <span style={{ marginRight: '10px', verticalAlign: 'middle' }}>@hypermkt</span>
         </a>
 
         <a href="https://x.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
@@ -78,9 +80,11 @@ const Bio = () => {
               height: '1.2em',
               width: '1.2em',
               margin: '2px',
+              verticalAlign: 'middle',
             }}
             icon={faXTwitter}
           />
+          <span style={{ marginRight: '10px', verticalAlign: 'middle' }}>@hypermkt</span>
         </a>
 
         <a href="https://qiita.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
@@ -92,8 +96,10 @@ const Bio = () => {
               backgroundColor: '#4cb10d',
               borderRadius: '2px',
               margin: '3px',
+              verticalAlign: 'middle',
             }}
             icon={faSearch} />
+          <span style={{ marginRight: '10px', verticalAlign: 'middle' }}>@hypermkt</span>
         </a>
 
         <a href="https://speakerdeck.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
@@ -103,9 +109,11 @@ const Bio = () => {
               height: '1.2em',
               width: '1.2em',
               margin: '2px',
+              verticalAlign: 'middle',
             }}
             icon={faSpeakerDeck}
           />
+          <span style={{ verticalAlign: 'middle' }}>hypermkt</span>
         </a>
       </p>
     </div>
