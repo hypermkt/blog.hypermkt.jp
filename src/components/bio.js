@@ -10,7 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare, faTwitterSquare, faSpeakerDeck } from '@fortawesome/free-brands-svg-icons'
+import { faGithubSquare, faXTwitter, faSpeakerDeck } from '@fortawesome/free-brands-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { rhythm } from "../utils/typography"
@@ -66,20 +66,22 @@ const Bio = () => {
               height: '1.2em',
               width: '1.2em',
               margin: '2px',
+              verticalAlign: 'middle',
             }}
             icon={faGithubSquare}
           />
         </a>
 
-        <a href="https://twitter.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
+        <a href="https://x.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
           <FontAwesomeIcon
-            color="#3eaded"
+            color="#000"
             style={{
               height: '1.2em',
               width: '1.2em',
               margin: '2px',
+              verticalAlign: 'middle',
             }}
-            icon={faTwitterSquare}
+            icon={faXTwitter}
           />
         </a>
 
@@ -92,6 +94,7 @@ const Bio = () => {
               backgroundColor: '#4cb10d',
               borderRadius: '2px',
               margin: '3px',
+              verticalAlign: 'middle',
             }}
             icon={faSearch} />
         </a>
@@ -103,6 +106,7 @@ const Bio = () => {
               height: '1.2em',
               width: '1.2em',
               margin: '2px',
+              verticalAlign: 'middle',
             }}
             icon={faSpeakerDeck}
           />
