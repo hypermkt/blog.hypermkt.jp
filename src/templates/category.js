@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
@@ -34,7 +33,6 @@ const CategoryTemplate = ({ data, pageContext, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={`Posts in category "${category}"`} />
-      <Bio />
       <h1>Category: {category}</h1>
       {postsByYear.map(({ year, posts }) => (
         <React.Fragment key={year}>
