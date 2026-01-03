@@ -2,15 +2,28 @@ import React from "react"
 import {
   FacebookShareButton,
   FacebookIcon,
-  TwitterShareButton,
-  XIcon,
   HatenaShareButton,
   HatenaIcon,
+  XIcon,
 } from "react-share"
 
 const Share = ({ url, title }) => {
   const iconSize = 32
-  const buttonStyle = { marginLeft: "8px" }
+  const buttonStyle = { marginLeft: "8px", cursor: "pointer" }
+
+  const shareToX = () => {
+    const xUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(
+      url
+    )}&text=${encodeURIComponent(title)}&via=hypermkt`
+
+    const width = 550
+    const height = 420
+    const left = window.screen.width / 2 - width / 2
+    const top = window.screen.height / 2 - height / 2
+    const windowFeatures = `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+
+    window.open(xUrl, "share-x", windowFeatures)
+  }
 
   return (
     <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -20,10 +33,8 @@ const Share = ({ url, title }) => {
         </FacebookShareButton>
       </div>
 
-      <div style={buttonStyle}>
-        <TwitterShareButton title={title} via="hypermkt" url={url}>
-          <XIcon size={iconSize} round />
-        </TwitterShareButton>
+      <div style={buttonStyle} onClick={shareToX} role="button" tabIndex={0}>
+        <XIcon size={iconSize} round />
       </div>
 
       <div style={buttonStyle}>
