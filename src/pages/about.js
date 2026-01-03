@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faGithubSquare,
-  faTwitterSquare,
+  faXTwitter,
   faSpeakerDeck,
 } from "@fortawesome/free-brands-svg-icons"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -23,10 +23,10 @@ const AboutPage = ({ data, location }) => {
       color: "#333",
     },
     {
-      name: "Twitter",
-      url: "https://twitter.com/hypermkt",
-      icon: faTwitterSquare,
-      color: "#3eaded",
+      name: "X",
+      url: "https://x.com/hypermkt",
+      icon: faXTwitter,
+      color: "#000",
     },
     {
       name: "Qiita",
