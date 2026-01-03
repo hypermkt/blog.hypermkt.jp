@@ -1,75 +1,45 @@
 import React from "react"
 import { Link } from "gatsby"
-
-import { rhythm, scale } from "../utils/typography"
 import CategoryList from "./category-list"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
+  
   const header = (
-    <h3
-      style={{
-        ...scale(0.5),
-        fontFamily: `Montserrat, sans-serif`,
-        marginTop: 0,
-        marginBottom: 0,
-      }}
-    >
+    <h1 className="!font-bold !m-0 !tracking-tight" style={{ fontFamily: "Montserrat, sans-serif", fontSize: "2.25rem", lineHeight: "1.1" }}>
       <Link
-        style={{
-          boxShadow: `none`,
-          textDecoration: `none`,
-          color: `inherit`,
-        }}
+        className="!text-gray-800 no-underline shadow-none"
+        style={{ boxShadow: "none" }}
         to={`/`}
       >
         {title}
       </Link>
-    </h3>
+    </h1>
   )
+
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(35),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header
-        style={{
-          display: `flex`,
-          justifyContent: `space-between`,
-          alignItems: `center`,
-          marginBottom: rhythm(1.5),
-        }}
-      >
-        {header}
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              listStyle: `none`,
-              margin: 0,
-            }}
-          >
-            <li style={{ marginRight: rhythm(0.5), marginBottom: 0 }}>
-              <Link to={`/`}>Home</Link>
-            </li>
-            <li style={{ marginBottom: 0 }}>
-              <Link to={`/about`}>About</Link>
-            </li>
-          </ul>
-        </nav>
+    <div className="mx-auto max-w-5xl px-6 py-10 md:px-8 md:py-16">
+      <header className="mb-12 w-full">
+        <div className="flex w-full justify-between items-center">
+          {header}
+          <nav>
+            <div className="flex items-center">
+              <Link to={`/`} className="text-gray-800 font-medium hover:text-blue-600 transition-colors no-underline shadow-none">Home</Link>
+              <Link to={`/about`} className="ml-8 text-gray-800 font-medium hover:text-blue-600 transition-colors no-underline shadow-none">About</Link>
+            </div>
+          </nav>
+        </div>
       </header>
-      <main>{children}</main>
-      <footer>
-        <div style={{ marginBottom: rhythm(1) }}>
+      <main className="mb-20">{children}</main>
+      <footer className="mt-8 text-sm text-gray-500">
+        <div className="mb-2">
           <CategoryList />
         </div>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <div>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org" className="text-blue-500 hover:underline">Gatsby</a>
+        </div>
       </footer>
     </div>
   )
