@@ -248,117 +248,118 @@ const AboutPage = ({ data, location }) => {
           Webアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
         </p>
 
-                <section className="mb-10">
-                  <h2 className="text-2xl font-bold mb-4 mt-8">執筆</h2>
-                  <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
-                    {books.map((book, index) => (
-                      <li key={index}>
-                        <span className="font-medium">{book.media}</span>
-                        <span className="mx-2">/</span>
-                        {book.url ? (
-                          <a
-                            href={book.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 hover:underline"
-                          >
-                            {book.title}
-                          </a>
-                        ) : (
-                          <span>{book.title}</span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">執筆</h2>
+          <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+            {books.map((book, index) => (
+              <li key={index}>
+                <span className="font-medium">{book.media}</span>
+                <span className="mx-2">/</span>
+                {book.url ? (
+                  <a
+                    href={book.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    {book.title}
+                  </a>
+                ) : (
+                  <span>{book.title}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
         
-                <section className="mb-10">
-                  <h2 className="text-2xl font-bold mb-4 mt-8">テックブログ</h2>
-                  <ul className="list-disc list-outside !ml-5 !pl-0 space-y-3">
-                    {techBlogs.map((blog, index) => (
-                      <li key={index}>
-                        <span className="font-medium text-gray-700">{blog.media}</span>
-                        <span className="mx-2 text-gray-400">/</span>
-                        {blog.url ? (
-                          <a
-                            href={blog.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 hover:underline"
-                          >
-                            {blog.title}
-                          </a>
-                        ) : (
-                          blog.title
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="text-sm text-gray-500 mt-4 ml-1">
-                    ※ 本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
-                  </p>
-                </section>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">テックブログ</h2>
+          <ul className="list-disc list-outside !ml-5 !pl-0 space-y-3">
+            {techBlogs.map((blog, index) => (
+              <li key={index}>
+                <span className="font-medium text-gray-700">{blog.media}</span>
+                <span className="mx-2 text-gray-400">/</span>
+                {blog.url ? (
+                  <a
+                    href={blog.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    {blog.title}
+                  </a>
+                ) : (
+                  blog.title
+                )}
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-gray-500 mt-4 ml-1">
+            ※ 本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
+          </p>
+        </section>
         
-                <section className="mb-10">
-                  <h2 className="text-2xl font-bold mb-4 mt-8">発表</h2>
-                  {presentations.map((yearData, yearIndex) => (
-                    <div key={yearIndex} className="mb-6">
-                      <h3 className="text-xl font-bold text-gray-700 mb-2">{yearData.year}年</h3>
-                      <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
-                        {yearData.items.map((presentationItem, presentationIndex) => (
-                          <li key={presentationIndex}>
-                            <span className="font-medium text-gray-800">{presentationItem.event}</span>：{" "}
-                            <a
-                              href={presentationItem.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-600 hover:text-blue-800 hover:underline"
-                            >
-                              {presentationItem.title}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </section>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">発表</h2>
+          {presentations.map((yearData, yearIndex) => (
+            <div key={yearIndex} className="mb-6">
+              <h3 className="text-xl font-bold text-gray-700 mb-2">{yearData.year}年</h3>
+              <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+                {yearData.items.map((presentationItem, presentationIndex) => (
+                  <li key={presentationIndex}>
+                    <span className="font-medium text-gray-800">{presentationItem.event}</span>：{" "}
+                    <a
+                      href={presentationItem.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 hover:underline"
+                    >
+                      {presentationItem.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
         
-                <section className="mb-10">
-                  <h2 className="text-2xl font-bold mb-4 mt-8">コミュニティ</h2>
-                  {communities.map((communityYear, communityYearIndex) => (
-                    <div key={communityYearIndex} className="mb-6">
-                      <h3 className="text-xl font-bold text-gray-700 mb-2">{communityYear.year}年</h3>
-                      <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
-                        {communityYear.items.map((communityItem, communityItemIndex) => (
-                          <li key={communityItemIndex}>
-                            <a
-                              href={communityItem.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="font-medium text-blue-600 hover:text-blue-800 hover:underline"
-                            >
-                              {communityItem.event}
-                            </a>
-                            <span className="mx-1">：</span>
-                            {communityItem.role}
-                            {communityItem.articleUrl && (
-                              <span className="ml-2 text-sm">
-                                (
-                                <a
-                                  href={communityItem.articleUrl}
-                                  className="text-gray-500 hover:text-gray-700 underline"
-                                >
-                                  振り返り記事
-                                </a>
-                                )
-                              </span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </section>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4 mt-8">コミュニティ</h2>
+          {communities.map((communityYear, communityYearIndex) => (
+            <div key={communityYearIndex} className="mb-6">
+              <h3 className="text-xl font-bold text-gray-700 mb-2">{communityYear.year}年</h3>
+              <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
+                {communityYear.items.map((communityItem, communityItemIndex) => (
+                  <li key={communityItemIndex}>
+                    <a
+                      href={communityItem.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                    >
+                      {communityItem.event}
+                    </a>
+                    <span className="mx-1">：</span>
+                    {communityItem.role}
+                    {communityItem.articleUrl && (
+                      <span className="ml-2 text-sm">
+                        (
+                        <a
+                          href={communityItem.articleUrl}
+                          className="text-gray-500 hover:text-gray-700 underline"
+                        >
+                          振り返り記事
+                        </a>
+                        )
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4 mt-8">SNS</h2>
           <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
