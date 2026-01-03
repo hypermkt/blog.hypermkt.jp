@@ -205,6 +205,40 @@ const AboutPage = ({ data, location }) => {
     },
   ]
 
+  const books = [
+    {
+      media: "Software Design 2019年12月号",
+      title:
+        "「基礎のクロスサイト・スクリプティング対策 PHPer のための Web セキュリティ入門」",
+      url: null,
+    },
+  ]
+
+  const techBlogs = [
+    {
+      media: "Pepabo Tech Portal",
+      title: "『いるだけで成長できる環境』グーペのエンジニアインターン2016レポート",
+      url: "https://tech.pepabo.com/2016/10/07/goope-engineer-internship-2016/",
+    },
+    {
+      media: "Pepabo Tech Portal",
+      title: "グーペのPHPバージョンを5.2から7.1にアップグレードしました",
+      url: "https://tech.pepabo.com/2017/06/21/goope-php71-upgrade/",
+    },
+    {
+      media: "SmartHR Tech Blog",
+      title:
+        "PostgreSQLでjsonb型カラムのデータを検索した話",
+      url: "https://tech.smarthr.jp/entry/2023/09/20/124323",
+    },
+    {
+      media: "SmartHR Tech Blog",
+      title:
+        "スプリントプランニングの未来予測： 予言の書",
+      url: "https://tech.smarthr.jp/entry/2024/06/21/150305",
+    },
+  ]
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="About" />
@@ -212,12 +246,37 @@ const AboutPage = ({ data, location }) => {
       Webアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
       <h2>執筆</h2>
       <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
-        <li>
-          Software Design 2019年12月号
-          「基礎のクロスサイト・スクリプティング対策 PHPer のための Web
-          セキュリティ入門」
-        </li>
+        {books.map((book, index) => (
+          <li key={index}>
+            {book.media}：{" "}
+            {book.url ? (
+              <a href={book.url} target="_blank" rel="noopener noreferrer">
+                {book.title}
+              </a>
+            ) : (
+              book.title
+            )}
+          </li>
+        ))}
       </ul>
+      <h2>テックブログ</h2>
+      <ul style={{ listStylePosition: "inside", marginLeft: 0 }}>
+        {techBlogs.map((blog, index) => (
+          <li key={index}>
+            {blog.media}：{" "}
+            {blog.url ? (
+              <a href={blog.url} target="_blank" rel="noopener noreferrer">
+                {blog.title}
+              </a>
+            ) : (
+              blog.title
+            )}
+          </li>
+        ))}
+      </ul>
+      <p style={{ fontSize: "0.8em", color: "#666" }}>
+        ※ 本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
+      </p>
       <h2>発表</h2>
       {presentations.map((yearData, index) => (
         <div key={index}>
