@@ -26,7 +26,10 @@ const CategoryList = () => {
       <ul style={{ display: 'flex', flexWrap: 'wrap', listStyle: 'none', padding: 0 }}>
         {categories.map(category => (
           <li key={category.fieldValue} style={{ marginRight: '1rem' }}>
-            <Link to={`/category/${kebabCase(category.fieldValue)}/`}>
+            <Link
+              to={`/category/${kebabCase(category.fieldValue)}/`}
+              style={{ fontSize: '1.05rem' }}
+            >
               {category.fieldValue} ({category.totalCount})
             </Link>
           </li>
