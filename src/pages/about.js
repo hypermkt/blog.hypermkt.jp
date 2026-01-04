@@ -51,7 +51,7 @@ const AboutPage = ({ data, location }) => {
       year: 2016,
       items: [
         {
-          event: "Vue.js Tokyo v-meetup=\"#1\"",
+          event: 'Vue.js Tokyo v-meetup="#1"',
           title: "翻訳から始めるVue.js入門",
           url: "https://www.slideshare.net/slideshow/vuejs-62571331/62571331",
         },
@@ -199,7 +199,7 @@ const AboutPage = ({ data, location }) => {
           event: "Vue Fes Japan 2018",
           role: "実行委員 (コアスタッフ / スポンサー担当)",
           url: "https://vuefes.jp/2018/",
-          articleUrl: "/2018/12/21/vue-fes-japan-2018-core-staff/",
+          articleUrl: "/2018/2018-12-21-vue-fes-japan-2018-core-staff/",
         },
       ],
     },
@@ -217,7 +217,8 @@ const AboutPage = ({ data, location }) => {
   const techBlogs = [
     {
       media: "Pepabo Tech Portal",
-      title: "『いるだけで成長できる環境』グーペのエンジニアインターン2016レポート",
+      title:
+        "『いるだけで成長できる環境』グーペのエンジニアインターン2016レポート",
       url: "https://tech.pepabo.com/2016/10/07/goope-engineer-internship-2016/",
     },
     {
@@ -227,14 +228,12 @@ const AboutPage = ({ data, location }) => {
     },
     {
       media: "SmartHR Tech Blog",
-      title:
-        "PostgreSQLでjsonb型カラムのデータを検索した話",
+      title: "PostgreSQLでjsonb型カラムのデータを検索した話",
       url: "https://tech.smarthr.jp/entry/2023/09/20/124323",
     },
     {
       media: "SmartHR Tech Blog",
-      title:
-        "スプリントプランニングの未来予測： 予言の書",
+      title: "スプリントプランニングの未来予測： 予言の書",
       url: "https://tech.smarthr.jp/entry/2024/06/21/150305",
     },
   ]
@@ -271,7 +270,7 @@ const AboutPage = ({ data, location }) => {
             ))}
           </ul>
         </section>
-        
+
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4 mt-8">テックブログ</h2>
           <ul className="list-disc list-outside !ml-5 !pl-0 space-y-3">
@@ -295,19 +294,25 @@ const AboutPage = ({ data, location }) => {
             ))}
           </ul>
           <p className="text-sm text-gray-500 mt-4 ml-1">
-            ※ 本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
+            ※
+            本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
           </p>
         </section>
-        
+
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4 mt-8">発表</h2>
           {presentations.map((yearData, yearIndex) => (
             <div key={yearIndex} className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">{yearData.year}年</h3>
+              <h3 className="text-xl font-bold text-gray-700 mb-2">
+                {yearData.year}年
+              </h3>
               <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
                 {yearData.items.map((presentationItem, presentationIndex) => (
                   <li key={presentationIndex}>
-                    <span className="font-medium text-gray-800">{presentationItem.event}</span>：{" "}
+                    <span className="font-medium text-gray-800">
+                      {presentationItem.event}
+                    </span>
+                    ：{" "}
                     <a
                       href={presentationItem.url}
                       target="_blank"
@@ -322,39 +327,43 @@ const AboutPage = ({ data, location }) => {
             </div>
           ))}
         </section>
-        
+
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4 mt-8">コミュニティ</h2>
           {communities.map((communityYear, communityYearIndex) => (
             <div key={communityYearIndex} className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">{communityYear.year}年</h3>
+              <h3 className="text-xl font-bold text-gray-700 mb-2">
+                {communityYear.year}年
+              </h3>
               <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
-                {communityYear.items.map((communityItem, communityItemIndex) => (
-                  <li key={communityItemIndex}>
-                    <a
-                      href={communityItem.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-blue-600 hover:text-blue-800 hover:underline"
-                    >
-                      {communityItem.event}
-                    </a>
-                    <span className="mx-1">：</span>
-                    {communityItem.role}
-                    {communityItem.articleUrl && (
-                      <span className="ml-2 text-sm">
-                        (
-                        <a
-                          href={communityItem.articleUrl}
-                          className="text-gray-500 hover:text-gray-700 underline"
-                        >
-                          振り返り記事
-                        </a>
-                        )
-                      </span>
-                    )}
-                  </li>
-                ))}
+                {communityYear.items.map(
+                  (communityItem, communityItemIndex) => (
+                    <li key={communityItemIndex}>
+                      <a
+                        href={communityItem.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                      >
+                        {communityItem.event}
+                      </a>
+                      <span className="mx-1">：</span>
+                      {communityItem.role}
+                      {communityItem.articleUrl && (
+                        <span className="ml-2 text-sm">
+                          (
+                          <a
+                            href={communityItem.articleUrl}
+                            className="text-gray-500 hover:text-gray-700 underline"
+                          >
+                            振り返り記事
+                          </a>
+                          )
+                        </span>
+                      )}
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           ))}
@@ -370,11 +379,11 @@ const AboutPage = ({ data, location }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 hover:underline transition-colors no-underline"
-                  style={{ boxShadow: 'none' }}
+                  style={{ boxShadow: "none" }}
                 >
                   <FontAwesomeIcon
                     icon={social.icon}
-                    style={{ color: social.color, width: '1.2em' }}
+                    style={{ color: social.color, width: "1.2em" }}
                   />
                   <span className="font-medium text-gray-800">
                     {social.account}
