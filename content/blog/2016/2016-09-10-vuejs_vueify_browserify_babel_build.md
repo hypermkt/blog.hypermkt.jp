@@ -8,49 +8,34 @@ categories:
 
 ## 概要
 
-
 vueify利用時に
-babel-coreをインストールするので、
-*  .vueファイル内はES2015形式でも記述できるのですが、それ以外のファイルはES5形式で書く必要があります。一部だけ記法が違うのも気持ち悪かったので、他のJSファイル内でもES2015形式で書けるようにする方法をまとめます。
+babel-coreをインストールするので、`*.vue` ファイル内はES2015形式でも記述できるのですが、それ以外のファイルはES5形式で書く必要があります。一部だけ記法が違うのも気持ち悪かったので、他のJSファイル内でもES2015形式で書けるようにする方法をまとめます。
 
 
 ## 用語説明
 
-
-
 ### ES2015
-
 
 ES2015とはJavaScriptの仕様バージョンのことで極端に言えばPHP5などと同じようなものです。現行のほとんどのブラウザはES5と呼ばれるバージョンになっていますが、ES2015から新しい文法が使えるようになります。別名ES6とも呼ばれています。（この辺が紛らわしい）
 
-
 ### vueify
 
-
-Vue.jsのコンポーネントを 
-*  .vue ファイルに分割することができます。また一つの 
-.vue ファイル内でcss/template/scriptの３つを管理することができ見通しが良くなります。
-
+Vue.jsのコンポーネントを `*.vue` ファイルに分割することができます。また一つの .vue ファイル内でcss/template/scriptの３つを管理することができ見通しが良くなります。
 
 ### browserify
 
-
-ブラウザ動作用に記述したJavaScriptコード内で 
-require('modules') が使えるようになります。
-
+ブラウザ動作用に記述したJavaScriptコード内で require('modules') が使えるようになります。
 
 ### Babel
-
 
 ES2015に対応したトランスコンパイラです。ES2015形式で書いたJavaScriptコードをES5に変換してくれます。
 
 
 ## 参考ソースコード
 
-
 package.json
 
-
+```
 {
   "scripts": {
     "build": "browserify -e main.js -o app.js"
@@ -72,12 +57,12 @@ package.json
     "vueify": "^8.7.0"
   }
 }
-
- 
+```
 
 index.html
 
 
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,10 +80,12 @@ index.html
 <script src="app.js"></script>
 </body>
 </html>
+```
 
 main.js
 
 
+```javascript
 import Vue from 'vue';
 import Header from './components/header.vue';
 import Footer from './components/footer.vue';
@@ -114,32 +101,35 @@ new Vue({
     message: 'Hello Vue.js'
   }
 });
+```
 
 components/heaeder.vue
 
 
+```
 <template>
 header
 </template>
+```
 
 components/footer.vue
 
 
+```
 <template>
 footer
 </template>
+```
 
 
 ## 設定方法
-
-
 
 ### 必要パッケージのインストール
 
 
 まずは Vue.js + vueify + browserify + Babel でビルドするために必要なパッケージを全てインストールします。
 
-
+```
 npm install\
     vue\
     vueify\
@@ -150,12 +140,12 @@ npm install\
     browserify\
     baberify\
     --save-dev
+```
 
 
 babel-core〜babel-runtime
 
-これらのパッケージは vueify インストール時の必要パッケージとして要求されます。これらをインストールすることで、 
-*  .vue 内ではES2015でコードを書くことができます。
+これらのパッケージは vueify インストール時の必要パッケージとして要求されます。これらをインストールすることで、 `*.vue` 内ではES2015でコードを書くことができます。
 
 
 babelify
@@ -172,25 +162,25 @@ package.json内でbrowserify.transform項目を記述することで、browserif
 vueify と 
 babelily の２つを同時に適用したので下記のように記述します。
 
-
+```javascript
 "browserify": {
     "transform": [
       "vueify",
       "babelify"
      ]
   },
-
+```
 
 ### .babelrc
 
-
-
+```
 {
   "presets": ["es2015"],
   "plugins": [
     "transform-runtime"
   ]
 }
+```
 
 
 presets
@@ -211,24 +201,22 @@ babel-polyfill があるらしいがグローバル汚染するのことでこ�
 ## ビルド
 
 
+package.json の scripts で build を宣言しているので下記で実行できます。
 
-package.json の 
-scripts で 
-build を宣言しているので下記で実行できます。
-
-
+```
 npm run build
+```
 
 結果、下記のように表示されれば成功です。
 
 
 ![vuejs_babelify](/images/vuejs_babelify.png)
 
-本件のソースコードは
-[こちら](https://github.com/hypermkt/vuejs-samples/tree/master/vueify-babel-build)に置いてあります。
+本件のソースコードは[こちら](https://github.com/hypermkt/vuejs-samples/tree/master/vueify-babel-build)に置いてあります。
 
 
 ## 感想
 
 
 正直随分ハマりましたが、これでES2015でコードが書けるようになって幸せです。（といいつつも全く書けません。勉強中です。）
+

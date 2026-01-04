@@ -10,22 +10,23 @@ categories:
 
 ### nのインストール
 
-
-
+```
 $ npm install -g n
+```
 
 
 ### nodejsを最新にアップデート
 
-
-
+```
 $ n latest
-
+```
 
 ### npmを最新にアップデート
 
 
 
+```
 $ npm update -g npm
+```
 
 と自分用にメモ。

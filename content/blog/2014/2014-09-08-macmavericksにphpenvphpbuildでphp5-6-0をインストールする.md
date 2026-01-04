@@ -2,34 +2,31 @@
 title: Mac(Mavericks)にphpenv+phpbuildでPHP5.6.0をインストールする
 date: "2014-09-08"
 categories: 
-- 未分類
+- PHP
 ---
 
-先日ついにPHP5.6.0が正式リリースし、同僚からも「ちゃんとPHP5.6.0をキャッチアップしてる？？」と煽られたので早速ローカル環境にPHP5.6.0をインストールします。##準備
+先日ついにPHP5.6.0が正式リリースし、同僚からも「ちゃんとPHP5.6.0をキャッチアップしてる？？」と煽られたので早速ローカル環境にPHP5.6.0をインストールします。
 
-
+## 準備
 
 ### phpenvをインストール
 
-
-
+```
 cd
 git clone git://github.com/phpenv/phpenv.git .phpenv
 echo 'export PATH="$HOME/.phpenv/bin:$PATH"' >> ~/.bash_profile
 echo 'eval "$(phpenv init -)"' >> ~/.bash_profile
-
+```
 
 ### php-buildをインストール
 
-
-
+```
 git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build
-
+```
 
 ## PHP5.6.0のインストール
 
-
-
+```
 $ php-build 5.6.0 ~/.phpenv/versions/5.6.0
 [Info]: Loaded apc Plugin.
 [Info]: Loaded pyrus Plugin.
@@ -50,12 +47,12 @@ $ php-build 5.6.0 ~/.phpenv/versions/5.6.0
 [Info]: Done
 [Info]: The Log File is not empty, but the Build did not fail. Maybe just warnings got logged. You can review the log in /tmp/php-build.5.6.0.20140907105041.log
 [Success]: Built 5.6.0 successfully.
-
+```
 
 ## PHP5.6.0に切り替える
 
 
-
+```
 *   system (set by /Users/#{username}/.phpenv/version)
   5.6.0
 $ phpenv local 5.6.0
@@ -69,3 +66,4 @@ Copyright (c) 1997-2014 The PHP Group
 Zend Engine v2.6.0, Copyright (c) 1998-2014 Zend Technologies
     with Zend OPcache v7.0.4-dev, Copyright (c) 1999-2014, by Zend Technologies
     with Xdebug v2.2.5, Copyright (c) 2002-2014, by Derick Rethans
+```

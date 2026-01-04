@@ -4,32 +4,26 @@ date: "2016-08-20"
 categories: 
 - Centos
 - MySQL
+- Percona Tool Kit
 ---
 
 約5,000万件のテーブルにインデックスを張らなくてはいけなくなりました。明らかに時間がかかることが明白でしたので、Percona Tool Kitの pt-online-schema-change を使うことにしました。これを使うことで安全かつ高速にインデックス追加ができるようになります。今回はCentOS5にPercona Tool Kitをインストールする方法をまとめます。(なんで今さらCentOS5なの？ということはスルーして下さい・・・)##pt-olnine-schema-change とは
-
-
 
 [Percona社](https://www.percona.com/) が提供しているMySQL用の便利ツール集 
 [Percona Tool Kit](https://www.percona.com/software/mysql-tools/percona-toolkit)の一つです。pt-online-schema-changeを利用することでサービスを無停止でカラム、インデックス追加等の操作が実行できます。詳しくは
 [こちら](http://d.hatena.ne.jp/fat47/20140418/1397811745) をご覧ください。図付きの解説が分かりやすくまとまっています。
 
- 
-
-
 ## インストール方法
-
 
 英語ですが手順は
 [本家のサイト](https://www.percona.com/doc/percona-server/5.5/installation/yum_repo.html)にまとまっています。それを参考にインストールを進めます。
 
-
 ### Percona Yum Repositoryのインストール
-
 
 まずはpercona-release-0.1-3.noarch.rpmをダウンロードします。CentOS5ではリモートのyumを直接インストールすることが出来ないのでwgetする必要があります。
 
 
+```
 [root@www ~]# wget http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
 --2016-08-20 18:58:37-- http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
 Resolving www.percona.com... 74.121.199.234
@@ -45,10 +39,12 @@ Saving to: `percona-release-0.1-3.noarch.rpm'
 100%[===========================================================================================================================================&gt;] 6,566 --.-K/s in 0s
 
 2016-08-20 18:58:39 (88.2 MB/s) - `percona-release-0.1-3.noarch.rpm' saved [6566/6566]
+```
 
 ダウンロードしたらrpmコマンドでインストールします。
 
 
+```
 [root@www ~]# ll
 total 56
 -rw------- 1 root root 1126 Aug 31 2012 anaconda-ks.cfg
@@ -59,6 +55,7 @@ total 56
 warning: percona-release-0.1-3.noarch.rpm: Header V4 DSA signature: NOKEY, key ID cd2efd2a
 Preparing... ### ### ### ### ### ### ### ### ### ### ### ### ### ### # [100%]
 1:percona-release ### ### ### ### ### ### ### ### ### ### ### ### ### ### # [100%]
+```
 
 これで完了。
 
@@ -68,7 +65,7 @@ Preparing... ### ### ### ### ### ### ### ### ### ### ### ### ### ### # [100%]
 
 このようにインストール可能な状態となります。
 
-
+```
 [root@www ~]# yum list | grep percona
 percona-release.noarch 0.1-3 installed
 Percona-SQL-50-debuginfo.x86_64 5.0.92-b23.89.rhel5 percona-release-x86_64
@@ -178,10 +175,12 @@ sysbench-debuginfo.x86_64 0.5-6.el5 percona-release-x86_64
 tokumx-enterprise.x86_64 2.0.2-1.el5 percona-release-x86_64
 tokumx-enterprise-common.x86_64 2.0.2-1.el5 percona-release-x86_64
 tokumx-enterprise-server.x86_64 2.0.2-1.el5 percona-release-x86_64
+```
 
 必要なのは Percona Tool Kit だけなので、それだけをインストールします。
 
 
+```
 [root@www ~]# yum install percona-toolkit.noarch
 Loaded plugins: fastestmirror, security
 Loading mirror speeds from cached hostfile
@@ -262,10 +261,12 @@ mysql.x86_64 0:5.0.95-5.el5_9 perl-DBD-MySQL.x86_64 0:3.0007-2.el5 perl-IO-Socke
 perl-TermReadKey.x86_64 0:2.30-3.el5.rf
 
 Complete!
+```
 
 これでインストール完了です。コマンドを叩くと使えるようになっているのが分かります。
 
 
+```
 [root@www ~]# pt-online-schema-change
 Usage: pt-online-schema-change [OPTIONS] DSN
 
@@ -278,5 +279,6 @@ writes. Specify the database and table in the DSN. Do not use this tool before
 reading its documentation and checking your backups carefully. For more
 details, please use the --help option, or try 'perldoc
 /usr/bin/pt-online-schema-change' for complete documentation.
+```
 
 実際 pt-online-schema-changeしか使ったこと無いので他のコマンドを試してみたいですね。
