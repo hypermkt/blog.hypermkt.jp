@@ -17,7 +17,7 @@
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-feed": "^5.10.0",
-    "gatsby-plugin-google-analytics": "^5.12.0",
+    "gatsby-plugin-google-analytics": "^5.15.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-offline": "^6.10.0",
