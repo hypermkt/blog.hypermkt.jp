@@ -3,26 +3,21 @@ title: Vue.js componentでvue-router,vue-resourceを利用したメソッドのU
 date: "2016-11-26"
 categories: 
 - Vue.js
+- vue-router
+- vue-resource
 ---
 
 ## 始めに
 
-
 最近vue-resource・vue-routerを使ったSPAウェブサービスを開発・運用しており、ふとそろそろUnit Testを書いてみたいな〜と思い、ググってみたのですが思っていた以上に情報が見つからず・・・。ネット上で見つけたのは下記の３つのみ。
 
-
 *  [公式サイトのUnit Testing](https://vuejs.org/v2/guide/unit-testing.html)
-
-
 *  [Vuejs testingのスライド](http://www.slideshare.net/coulix/vuejs-testing?qid=cf224629-58db-4968-bc7b-6d3dfab85d58&v=&b=&from_search=1)
-
-
 *  [Rails + Vue.jsなアプリケーションではじめてのフロントエンドのユニットテスト - Qiita](http://qiita.com/edwardkenfox/items/a44dd04fb80c30c53aba)
 
 公式サイトを見ながら見よう見まねで書いてみたが、ハマりにハマってしまいもう無理だーとVue.jsコミュニティの方々に助けを求めました。皆さんから多数の提案を頂き、無事に解決しました。本当にありがとうございます！
 
 今回はVue.jsコミュニティの方々に教えて頂いた、Vue.js componentのUnitTestを書く方法をまとめます。
-
 
 ## 前提
 
@@ -31,39 +26,22 @@ categories:
 
 
 *  Vue.js 2.0 + vue-resource + vue-router + vueify
-
-
 *  karma
-
-
 *  mocha
-
-
 *  chai
 
 
 ## テストケース ３パターン
 
-
-
 *  普通のコンポーネントメソッド
-
-
 *  vue-routerのパラメーターを利用したメソッドのテスト
-
-
 *  vue-resourceでAPI呼び出しをしているメソッドのテスト
 
 
 ### テストについて
 
-
-
 *  Vue.jsの
-*  .vueのコンポーネントを対象とし、
-methods内のメソッドをテストします。
-
-
+*  .vueのコンポーネントを対象とし、methods内のメソッドをテストします。
 *  一部省略していますが、
 [こちら](https://github.com/hypermkt/vuejs-samples/tree/master/vue-component-unittest)にサンプルコードが置いてありますのでこちらをご覧ください。
 
@@ -75,6 +53,7 @@ methods内のメソッドをテストします。
 addという足し算メソッドがあったとします。
 
 
+```javascript
 export default {
   methods: {
     add(a, b) {
@@ -82,12 +61,13 @@ export default {
     }
   }
 }
+```
 
 上記のメソッドのテストをする場合は以下のように記述します。ポイントは以下の通りです。
-*   テスト対象のコンポーネントをimportします。（読み込み時にファイルパスは適度の調整してください。）
-*   コンポーネント内のメソッドへはmethodsを通じて呼び出すことができます。これはVueの基本仕様通りメソッドはmethods内にあるからです。
+* テスト対象のコンポーネントをimportします。（読み込み時にファイルパスは適度の調整してください。）
+* コンポーネント内のメソッドへはmethodsを通じて呼び出すことができます。これはVueの基本仕様通りメソッドはmethods内にあるからです。
 
-
+```javascript
 import Test from '../../../src/js/components/test.vue';
 
 describe('Testコンポーネント', () => {
@@ -95,10 +75,11 @@ describe('Testコンポーネント', () => {
     expect(Test.methods.add(1, 2)).to.be.eql(3);
   })
 });
+```
 
 また下記のようにすればメソッドの存在確認テストもできます。
 
-
+```javascript
 import Test from '../../../src/js/components/test.vue';
 
 describe('Testコンポーネント', () => {
@@ -106,6 +87,7 @@ describe('Testコンポーネント', () => {
     expect(Test.methods.add).to.be.a('function');
   })
 });
+```
 
 ここまでは自分で出来ました。
 
@@ -115,7 +97,7 @@ describe('Testコンポーネント', () => {
 
 ここからは自分では解決できず、コミュニティの方の助言で解決しました。例えば下記のように vue-router のパラメーターを取得して文字列結合をするとします。
 
-
+```javascript
 export default {
   methods: {
     myName() {
@@ -123,17 +105,15 @@ export default {
     }
   }
 }
+```
 
 上記のメソッドのテストをする場合は以下のように記述します。ポイントは以下の通りです。
 
-
 *  [Vue.extend](https://jp.vuejs.org/v2/api/#Vue-extend)でサブクラスを作成し、テストケースの中でインスタンス化します
-
-
 *  またインスタンス化時に
 [beforeCreate](https://jp.vuejs.org/v2/api/#beforeCreate)でルーティングのパラメーターを設定することが出来、ルーティングされた体でテストを書くことが出来るようになります。
 
-
+```javascript
 import Vue from 'vue';
 import _Test from '../../../src/js/components/test.vue';
 
@@ -149,15 +129,16 @@ describe('Testコンポーネント', () => {
     expect(vm.myName()).to.be.eql('Yamada Taro')
   });
 });
+```
 
 
 ### パターン３：vue-resourceでAPI呼び出しをしているメソッドのテスト
 
 
-今回一番悩んだのがこのテストケースでした。APIを利用してJSONで値を取得し、success時にデータオブジェクトのprofileを変更したい場合です。API呼び出しには 
-[vue-resource](https://github.com/pagekit/vue-resource)のグローバル関数 Vue.http.get を利用していました。メソッドの返り値はPromiseとなり、非同期処理のテストってどうやるのか・・・。
+今回一番悩んだのがこのテストケースでした。APIを利用してJSONで値を取得し、success時にデータオブジェクトのprofileを変更したい場合です。API呼び出しには [vue-resource](https://github.com/pagekit/vue-resource)のグローバル関数 Vue.http.get を利用していました。メソッドの返り値はPromiseとなり、非同期処理のテストってどうやるのか・・・。
 
 
+```javascript
 export default {
   data() {
     return {
@@ -175,6 +156,7 @@ export default {
     }
   }
 }
+```
 
 ゴールのイメージとしては外部リソースであるAPIを実行しないようにモック化し、テスト対象のメソッド内で置き換えをすることです。
 
@@ -183,6 +165,7 @@ export default {
 $Vueからテスト対象オブジェク自身を取得できるように調整します。
 
 
+```javascript
 export default {
   data() {
     return {
@@ -203,6 +186,7 @@ export default {
     }
   }
 }
+```
 
 次にテストケースです。ポイントは以下の通りです。
 
@@ -210,16 +194,13 @@ export default {
 *  まずテストケースの引数にdoneを指定します。
 [mochaの仕様](https://mochajs.org/#asynchronous-code)でdone()の実行をもって非同期テストが終了したことをmochaに通知します。（通例的に
 doneと命名されるそうです）
-
-
 *  Vue.http.getでAPIを実際に呼び出さないようにモック化。getメソッドでPromiseの成功時にjson()メソッドがprofileのオブジェクトを返すように設定します。sinon等のモックライブラリを使わず、今回は仮の値を返す方式でも問題ありません。そしてテストケース2と同じ方式でコンポーネントをインスタンス化し、今回のテストケース用に設定した
 $Vueを通じて、Vueインスタンスのグローバル変数を上書きします。
-
-
 *  最後にテスト対象のメソッドを実行します。今回は非同期のテストにつき、そのままではPromiseの成功処理に入らないので、setTimeoutで擬似的に非同期にします。setTimeout内のdone()の実行をもって非同期テストが終了したことをmochaに通知され、モックで指定した通り 
 Promise.resolveで成功処理に入りテストケースが通ります。
 
 
+```javascript
 import Vue from 'vue';
 import _Test from '../../../src/js/components/test.vue';
 
@@ -250,6 +231,7 @@ describe('Testコンポーネント', () => {
     }, 0)
   });
 });
+```
 
 
 ## Special Thanks
@@ -257,17 +239,11 @@ describe('Testコンポーネント', () => {
 
 今回はVue.jsコミュニティの下記の方々に１週間に渡って何度も助言頂きました。最後にはパッチまで準備して頂きありがとうございます！とても勉強になりました。
 
-
 *  [@chi-bd](https://github.com/chi-bd)
-
-
 *  [@kitak](https://twitter.com/kitak)
-
-
 *  [@ktsn](https://twitter.com/ktsn)
 
 
 ## 感想
-
 
 普段からJavaScriptのテストコードを全く書いたことがなかったので、正直基本的な事から理解が出来ず苦労しました。ただVue.jsを通じてテストを書く機会が生まれて、この３パターンなら書けるようになりました。JavaScriptのテストコードコード楽しいですね〜。もっと書きたくなったぞー！

@@ -7,15 +7,9 @@ categories:
 
 ## 結論
 
-
-
 *  最初から
 [入門Ansible [Kindle版]](http://www.amazon.co.jp/%E5%85%A5%E9%96%80Ansible-%E8%8B%A5%E5%B1%B1%E5%8F%B2%E9%83%8E-ebook/dp/B00MALTGDY)を買って読んでおけば良かった！
-
-
 *  ちまたで言われているほどシンプルでも簡単でも無かった。
-
-
 *  それでもやっぱりPuppet/Chefより学習コストは低いので今後も使いたい。
 
 以上！
@@ -35,8 +29,6 @@ categories:
 
 
 *  [実践！Ansibleベストプラクティス（前編） - さくらのナレッジ](http://knowledge.sakura.ad.jp/tech/3084/)
-
-
 *  [実践！Ansibleベストプラクティス（後編） - さくらのナレッジ](http://knowledge.sakura.ad.jp/tech/3086/)
 
 
@@ -60,32 +52,14 @@ shellやcommandモジュールなど一部のモジュールでは単なる状�
 
 
 *  service
-
-
 *  yum
-
-
 *  gem
-
-
 *  copy
-
-
 *  template
-
-
 *  user
-
-
 *  file
-
-
 *  replace
-
-
 *  shell
-
-
 *  command
 
 
@@ -97,14 +71,8 @@ shellやcommandモジュールなど一部のモジュールでは単なる状�
 
 
 *  最低10個のモジュールの使い方を覚えればどうにかなる
-
-
 *  Best Practicesに従っておけば煩雑になりにくい
-
-
 *  インストールが簡単なのは最高。ssh接続ができれば対象サーバーに対してすぐに実行できる
-
-
 *  個人的にはこれが一番の理由でもあります。今までChefのインストールに相当苦しめられたので・・・。
 
 ということで年末年始休暇はAnsible一色で終わってしまった。
