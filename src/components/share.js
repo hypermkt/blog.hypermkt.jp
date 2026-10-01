@@ -26,7 +26,15 @@ const Share = ({ url, title }) => {
   }
 
   return (
-    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+    <div
+      className="share-buttons"
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
+      }}
+    >
+      <span className="mr-1 text-xs tracking-widest text-muted">SHARE</span>
       <div style={buttonStyle}>
         <FacebookShareButton url={url}>
           <FacebookIcon size={iconSize} round />

@@ -1,1 +1,123 @@
 @import "tailwindcss";
+
+@theme {
+  --color-paper: #fbfaf7;
+  --color-ink: #2b2a27;
+  --color-muted: #6b675f;
+  --color-subtle: #4d4a44;
+  --color-line: #e7e3db;
+  --color-accent: #3f5d70;
+  --color-accent-dark: #2a4252;
+  --color-code: #f3f1ec;
+  --font-display: "Montserrat", "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+
+html {
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--color-paper);
+}
+
+::selection {
+  background: #dfe6ea;
+}
+
+/* 記事本文 */
+.blog-post-content {
+  overflow-wrap: anywhere;
+}
+
+.blog-post-content h2 {
+  margin-top: 3.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.blog-post-content h3 {
+  margin-top: 2.4rem;
+}
+
+.blog-post-content h4 {
+  margin-top: 2rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.blog-post-content blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  border-left: 3px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 1rem;
+  font-style: normal;
+}
+
+.blog-post-content :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: var(--color-code);
+  color: var(--color-ink);
+  font-size: 0.88em;
+}
+
+.blog-post-content pre[class*="language-"] {
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: var(--color-code);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.blog-post-content .token.operator,
+.blog-post-content .token.entity,
+.blog-post-content .token.url {
+  background: none;
+}
+
+.blog-post-content iframe,
+.blog-post-content .twitter-tweet,
+.blog-post-content .instagram-media {
+  margin-bottom: 2rem !important;
+}
+
+.blog-post-content img {
+  border-radius: 4px;
+}
+
+.blog-post-content table {
+  font-size: 0.95rem;
+}
+
+.blog-post-content th,
+.blog-post-content td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.5rem 0.75rem;
+}
+
+.blog-post-content hr {
+  background: var(--color-line);
+  margin: 2.5rem 0;
+}
+
+/* シェアボタンは控えめにしておき、hover で色を戻す */
+.share-buttons button,
+.share-buttons svg {
+  display: block;
+}
+
+.share-buttons svg {
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.share-buttons > div:hover svg {
+  filter: none;
+  opacity: 1;
+}
