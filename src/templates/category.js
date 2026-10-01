@@ -2,80 +2,30 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import PostList from "../components/post-list"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
-import { formatDate } from "../utils/date"
 
 const CategoryTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { category } = pageContext
-  const posts = data.allMarkdownRemark.edges
-
-  // Group posts by year
-  const postsByYearMap = posts.reduce((acc, { node }) => {
-    const year = new Date(node.frontmatter.date).getFullYear()
-    if (!acc.has(year)) {
-      acc.set(year, [])
-    }
-    acc.get(year).push(node)
-    return acc
-  }, new Map())
-
-  const postsByYear = Array.from(postsByYearMap.entries())
-    .sort(([yearA], [yearB]) => yearB - yearA)
-    .map(([year, posts]) => ({
-      year,
-      posts: posts.sort(
-        (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-      ),
-    }))
+  const posts = data.allMarkdownRemark.nodes
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={`Posts in category "${category}"`} />
-      <h1>Category: {category}</h1>
-      {postsByYear.map(({ year, posts }) => (
-        <React.Fragment key={year}>
-          <h2
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: rhythm(0.5),
-            }}
+      <header className="mb-12">
+        <p className="!m-0 !mb-1 text-xs tracking-widest text-muted">
+          <Link
+            to="/category/"
+            className="!text-muted !no-underline hover:!text-ink"
           >
-            {year}
-          </h2>
-          {posts.map((node) => {
-            const title = node.frontmatter.title || node.fields.slug
-            return (
-              <article
-                key={node.fields.slug}
-                style={{ marginBottom: rhythm(0.5) }}
-              >
-                <header>
-                  <div style={{ display: `flex`, alignItems: `center` }}>
-                    <small
-                      style={{ marginRight: rhythm(0.5), fontSize: "0.9em" }}
-                    >
-                      {formatDate(node.frontmatter.date)}
-                    </small>
-                    <h3
-                      style={{
-                        ...scale(0.2),
-                        margin: 0,
-                        lineHeight: rhythm(1),
-                      }}
-                    >
-                      <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                        {title}
-                      </Link>
-                    </h3>
-                  </div>
-                </header>
-              </article>
-            )
-          })}
-        </React.Fragment>
-      ))}
+            Categories
+          </Link>
+        </p>
+        <h1 className="!m-0 !text-3xl">{category}</h1>
+        <p className="!m-0 !mt-2 text-sm text-muted">{posts.length} 件の記事</p>
+      </header>
+      <PostList posts={posts} />
     </Layout>
   )
 }
@@ -93,15 +43,13 @@ export const pageQuery = graphql`
       sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { categories: { in: [$category] } } }
     ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            date
-            title
-          }
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          date
+          title
         }
       }
     }

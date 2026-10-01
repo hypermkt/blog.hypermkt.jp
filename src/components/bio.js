@@ -9,11 +9,13 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare, faXTwitter, faSpeakerDeck } from '@fortawesome/free-brands-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
-import { rhythm } from "../utils/typography"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faGithubSquare,
+  faXTwitter,
+  faSpeakerDeck,
+} from "@fortawesome/free-brands-svg-icons"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -36,18 +38,34 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
+
+  const links = [
+    {
+      href: "https://github.com/hypermkt",
+      label: "GitHub",
+      icon: faGithubSquare,
+    },
+    { href: "https://x.com/hypermkt", label: "X", icon: faXTwitter },
+    {
+      href: "https://qiita.com/hypermkt",
+      label: "Qiita",
+      icon: faSearch,
+      boxed: true,
+    },
+    {
+      href: "https://speakerdeck.com/hypermkt",
+      label: "Speaker Deck",
+      icon: faSpeakerDeck,
+    },
+  ]
+
   return (
-    <div
-      style={{
-        display: `flex`,
-      }}
-    >
+    <div className="flex items-start gap-4">
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
         style={{
-          marginRight: rhythm(1 / 2),
           marginBottom: 0,
           minWidth: 50,
           borderRadius: `100%`,
@@ -56,62 +74,46 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
-        都内で働くWebアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
-        <br />
-        <a href="https://github.com/hypermkt" style={{boxShadow: 'none'}} target="_blank">
-          <FontAwesomeIcon
-            color="#333"
-            style={{
-              height: '1.2em',
-              width: '1.2em',
-              margin: '2px',
-              verticalAlign: 'middle',
-            }}
-            icon={faGithubSquare}
-          />
-        </a>
-
-        <a href="https://x.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
-          <FontAwesomeIcon
-            color="#000"
-            style={{
-              height: '1.2em',
-              width: '1.2em',
-              margin: '2px',
-              verticalAlign: 'middle',
-            }}
-            icon={faXTwitter}
-          />
-        </a>
-
-        <a href="https://qiita.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
-          <FontAwesomeIcon
-            color="white"
-            style={{
-              height: '1.1em',
-              width: '1.1em',
-              backgroundColor: '#4cb10d',
-              borderRadius: '2px',
-              margin: '3px',
-              verticalAlign: 'middle',
-            }}
-            icon={faSearch} />
-        </a>
-
-        <a href="https://speakerdeck.com/hypermkt" style={{'box-shadow': 'none'}} target="_blank">
-          <FontAwesomeIcon
-            color="#108274"
-            style={{
-              height: '1.2em',
-              width: '1.2em',
-              margin: '2px',
-              verticalAlign: 'middle',
-            }}
-            icon={faSpeakerDeck}
-          />
-        </a>
-      </p>
+      <div>
+        <p className="!m-0 text-sm font-semibold text-ink">{author}</p>
+        <p className="!m-0 !mt-1 text-sm leading-relaxed text-muted">
+          都内で働くWebアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
+        </p>
+        <ul className="!m-0 !mt-2 flex !list-none gap-3 p-0">
+          {links.map((link) => (
+            <li key={link.href} className="!m-0">
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                className="!text-muted transition-colors hover:!text-ink"
+              >
+                <FontAwesomeIcon
+                  icon={link.icon}
+                  style={
+                    link.boxed
+                      ? {
+                          height: "0.95em",
+                          width: "0.95em",
+                          padding: "2px",
+                          color: "white",
+                          backgroundColor: "var(--color-muted)",
+                          borderRadius: "2px",
+                          verticalAlign: "middle",
+                        }
+                      : {
+                          height: "1.15em",
+                          width: "1.15em",
+                          verticalAlign: "middle",
+                        }
+                  }
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

@@ -20,6 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                categories
               }
             }
           }
@@ -57,6 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: blogPost,
       context: {
         slug: post.node.fields.slug,
+        categories: post.node.frontmatter.categories || [],
         previous,
         next,
       },
@@ -65,7 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create category pages
   const categories = result.data.categoriesGroup.group
-  categories.forEach(category => {
+  categories.forEach((category) => {
     createPage({
       path: `/category/${_.kebabCase(category.fieldValue)}/`,
       component: categoryTemplate,

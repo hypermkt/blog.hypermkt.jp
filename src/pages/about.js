@@ -241,7 +241,7 @@ const AboutPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="About" />
-      <div className="text-gray-800">
+      <div className="text-ink">
         <h1 className="text-3xl font-bold mb-6">About</h1>
         <p className="text-lg leading-relaxed mb-8">
           Webアプリケーションエンジニア。主にサーバーサイド。最近はRuby/Railsでコードを書くのが楽しい。
@@ -259,7 +259,7 @@ const AboutPage = ({ data, location }) => {
                     href={book.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                    className="!text-accent hover:!text-accent-dark hover:underline"
                   >
                     {book.title}
                   </a>
@@ -276,14 +276,14 @@ const AboutPage = ({ data, location }) => {
           <ul className="list-disc list-outside !ml-5 !pl-0 space-y-3">
             {techBlogs.map((blog, index) => (
               <li key={index}>
-                <span className="font-medium text-gray-700">{blog.media}</span>
-                <span className="mx-2 text-gray-400">/</span>
+                <span className="font-medium text-ink">{blog.media}</span>
+                <span className="mx-2 text-muted">/</span>
                 {blog.url ? (
                   <a
                     href={blog.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                    className="!text-accent hover:!text-accent-dark hover:underline"
                   >
                     {blog.title}
                   </a>
@@ -293,7 +293,7 @@ const AboutPage = ({ data, location }) => {
               </li>
             ))}
           </ul>
-          <p className="text-sm text-gray-500 mt-4 ml-1">
+          <p className="text-sm text-muted mt-4 ml-1">
             ※
             本記事は勤務先で執筆したものです。内容は公開情報のみを扱っています。
           </p>
@@ -303,13 +303,13 @@ const AboutPage = ({ data, location }) => {
           <h2 className="text-2xl font-bold mb-4 mt-8">発表</h2>
           {presentations.map((yearData, yearIndex) => (
             <div key={yearIndex} className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">
+              <h3 className="text-xl font-bold text-ink mb-2">
                 {yearData.year}年
               </h3>
               <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
                 {yearData.items.map((presentationItem, presentationIndex) => (
                   <li key={presentationIndex}>
-                    <span className="font-medium text-gray-800">
+                    <span className="font-medium text-ink">
                       {presentationItem.event}
                     </span>
                     ：{" "}
@@ -317,7 +317,7 @@ const AboutPage = ({ data, location }) => {
                       href={presentationItem.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 hover:underline"
+                      className="!text-accent hover:!text-accent-dark hover:underline"
                     >
                       {presentationItem.title}
                     </a>
@@ -332,7 +332,7 @@ const AboutPage = ({ data, location }) => {
           <h2 className="text-2xl font-bold mb-4 mt-8">コミュニティ</h2>
           {communities.map((communityYear, communityYearIndex) => (
             <div key={communityYearIndex} className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">
+              <h3 className="text-xl font-bold text-ink mb-2">
                 {communityYear.year}年
               </h3>
               <ul className="list-disc list-outside !ml-5 !pl-0 space-y-2">
@@ -343,7 +343,7 @@ const AboutPage = ({ data, location }) => {
                         href={communityItem.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                        className="font-medium !text-accent hover:!text-accent-dark hover:underline"
                       >
                         {communityItem.event}
                       </a>
@@ -354,7 +354,7 @@ const AboutPage = ({ data, location }) => {
                           (
                           <a
                             href={communityItem.articleUrl}
-                            className="text-gray-500 hover:text-gray-700 underline"
+                            className="!text-muted hover:!text-ink underline"
                           >
                             振り返り記事
                           </a>
@@ -378,14 +378,14 @@ const AboutPage = ({ data, location }) => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 hover:underline transition-colors no-underline"
+                  className="inline-flex items-center space-x-2 !text-accent hover:!text-accent-dark hover:underline transition-colors no-underline"
                   style={{ boxShadow: "none" }}
                 >
                   <FontAwesomeIcon
                     icon={social.icon}
                     style={{ color: social.color, width: "1.2em" }}
                   />
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-ink">
                     {social.account}
                   </span>
                 </a>
