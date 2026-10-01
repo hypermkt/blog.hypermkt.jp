@@ -5,10 +5,10 @@ import kebabCase from "lodash/kebabCase"
 export const CategoryTag = ({ name, count }) => (
   <Link
     to={`/category/${kebabCase(name)}/`}
-    className="inline-block rounded-full border border-line !px-3 !py-0.5 !text-xs !leading-6 !text-muted !no-underline transition-colors hover:border-muted hover:!text-ink"
+    className="inline-block rounded-full border border-line !px-3 !py-0.5 !text-xs !leading-6 !text-subtle !no-underline transition-colors hover:border-muted hover:!text-ink"
   >
     {name}
-    {count !== undefined && <span className="ml-1 opacity-60">{count}</span>}
+    {count !== undefined && <span className="ml-1 text-muted">{count}</span>}
   </Link>
 )
 
@@ -57,7 +57,7 @@ const CategoryList = ({ limit, showHeading = true }) => {
           <li className="!m-0">
             <Link
               to="/category/"
-              className="inline-block !px-2 !text-xs !leading-7 !text-muted hover:!text-ink"
+              className="inline-block !px-2 !text-xs !leading-7 !text-subtle hover:!text-ink"
             >
               すべて見る →
             </Link>

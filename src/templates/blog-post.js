@@ -8,8 +8,6 @@ import SEO from "../components/seo"
 import Share from "../components/share"
 import { formatDate } from "../utils/date"
 
-const RELATED_POSTS_LIMIT = 5
-
 const SectionHeading = ({ children }) => (
   <h2
     className="!m-0 !mb-4 !text-xs !font-semibold !uppercase !tracking-widest !text-muted"
@@ -38,17 +36,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
   const categories = post.frontmatter.categories || []
 
-  // 同じカテゴリの記事を優先し、足りない分は最近の記事で埋める
-  const excluded = new Set(
-    [post.fields.slug, previous?.fields.slug, next?.fields.slug].filter(Boolean)
-  )
-  const relatedPosts = [...data.related.nodes, ...data.recent.nodes]
-    .filter((node) => {
-      if (excluded.has(node.fields.slug)) return false
-      excluded.add(node.fields.slug)
-      return true
-    })
-    .slice(0, RELATED_POSTS_LIMIT)
+  const relatedPosts = data.related.nodes
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -118,7 +106,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
       {relatedPosts.length > 0 && (
         <section className="mt-14">
-          <SectionHeading>Read next</SectionHeading>
+          <SectionHeading>同じカテゴリの記事</SectionHeading>
           <ul className="!m-0 !list-none border-t border-line p-0">
             {relatedPosts.map((node) => (
               <li key={node.fields.slug} className="!m-0 border-b border-line">
@@ -173,26 +161,17 @@ export const pageQuery = graphql`
         fields: { slug: { ne: $slug } }
       }
       sort: { frontmatter: { date: DESC } }
-      limit: 8
+      limit: 5
     ) {
       nodes {
-        ...RelatedPost
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date
+        }
       }
-    }
-    recent: allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 8) {
-      nodes {
-        ...RelatedPost
-      }
-    }
-  }
-
-  fragment RelatedPost on MarkdownRemark {
-    fields {
-      slug
-    }
-    frontmatter {
-      title
-      date
     }
   }
 `

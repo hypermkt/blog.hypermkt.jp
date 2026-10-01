@@ -26,7 +26,7 @@ const Layout = ({ title, children }) => {
               <li key={item.to} className="!m-0">
                 <Link
                   to={item.to}
-                  className="!text-sm !tracking-wide !text-muted !no-underline hover:!text-ink"
+                  className="!text-sm !font-medium !tracking-wide !text-subtle !no-underline hover:!text-ink"
                   activeClassName="!text-ink"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
