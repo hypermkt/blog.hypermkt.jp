@@ -37,7 +37,7 @@
     "lodash": "^4.18.1",
     "prismjs": "^1.30.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19.3.0",
     "react-helmet": "^6.1.0",
     "react-share": "^5.2.2",
     "react-typography": "^0.16.23",
